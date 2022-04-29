@@ -40,11 +40,11 @@ p, #footer {
 	margin-bottom: 72px;
 }
 
-#footer a + a {
+footer a + a {
 	margin-left: 28px;
 }
 
-#footer #line {
+footer #line {
 	width: 568px;
 	height: 0px;
 	margin: 0 auto 8px;
