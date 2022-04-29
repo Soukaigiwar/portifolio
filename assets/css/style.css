@@ -1,0 +1,78 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header, footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: monospace;
+	font-size: 14px;
+	color: white;
+}
+
+footer {
+	height: 10vh;
+	background-color: black;
+}
+
+header {
+	height: 20vh;
+	color: black;
+	font-size: 25px;
+	gap: 50px;
+	padding: 50px;
+}
+
+header p {
+	align-items: flex-end;
+}
+
+.content {
+	display: flex;
+	align-items: flex-end;
+	color: white;
+}
+
+.content {
+	height: 400vh;
+	font-size: 30px;
+
+	background-image: url(../img/night_sky.jpg),
+		linear-gradient(
+		180deg, 
+		rgb(0, 0, 0) 0%,
+		rgb(0, 0, 0) 40%,
+		rgb(101, 176, 241)
+		);
+		
+	background-repeat: no-repeat;
+	background-size:contain; 
+}
+
+.content li {
+	margin-left: 40px;
+	width: 500px;
+	height: 300px;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+#foguete {
+	font-size: 200px;
+}
+
+.foguete {
+	position: fixed;
+	bottom: 130px;
+	right: 10%;
+}
+.foguete img {
+	height: 450px;
+}
