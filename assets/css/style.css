@@ -52,7 +52,6 @@ header p {
 	background-size:contain; 
 }
 
-
 .content li {
 	margin-left: 25px;
 	width: 400px;
@@ -64,7 +63,7 @@ header p {
 }
 
 .thumbnail {
-	width: 250px;
+	width: 300px;
 	margin-top: 20px;
 	border-radius: 10px;
 	transition: .8s;
@@ -82,7 +81,8 @@ a {
 .foguete {
 	position: fixed;
 	bottom: 130px;
-	right: 10%;
+	left: 65%;
+	transition: .8s;
 }
 .foguete img {
 	height: 450px;
@@ -103,13 +103,13 @@ a {
 	}
 
 	.thumbnail {
-		width: 150px;
+		width: 180px;
 	}
 
 	.foguete {
 		position: fixed;
 		bottom: 130px;
-		right: 5%;
+		left: 200px;
 	}
 }
 
@@ -129,12 +129,12 @@ a {
 	}
 
 	.thumbnail {
-		width: 350px;
+		width: 400px;
 	}
 
 	.foguete {
 		position: fixed;
 		bottom: 130px;
-		right: 20%;
+		left: 600px;
 	}
 }
