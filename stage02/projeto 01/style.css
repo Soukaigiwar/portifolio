@@ -25,7 +25,7 @@ span, a {
 	text-decoration: none;
 }
 
-p, #footer {
+p, footer {
 	color: #7D7987;
 	font-size: 14px;
 	line-height: 28px;
@@ -44,7 +44,7 @@ footer a + a {
 	margin-left: 28px;
 }
 
-footer #line {
+#line {
 	width: 568px;
 	height: 0px;
 	margin: 0 auto 8px;
