@@ -1,117 +1,61 @@
 // capture elements
 const numberInput = document.querySelector('#numberInput');
 let numberValue = Number(numberInput.value);
-//console.log("Debug | numberInput: " + numberInput.value);
 const mainWindow = document.querySelector('.mainWindow');
 const tryAgainWindow = document.querySelector('.tryAgainWindow');
 const btnTry = document.querySelector('#btnTry');
 const btnPlayAgain = document.querySelector('#btnPlayAgain');
+let randomNumber;
+let countAttempts;
 
-// generate random number between 0 and 10 (inclusive)
-const randomNumber = Math.round(Math.random() * 10);
-console.log("Debug | randomNumber: " + randomNumber);
-console.log("Debug | numberValue= " + numberValue);
-
-// attempts counter
-let countAttempts = 1;
+// reset game to initialize then
+resetGame();
 
 // event listener
 document.addEventListener('keydown', (e) => {
     let keyPressed = e.key;
-    console.log(keyPressed);
-
-
-    // ###################################################################################
-    // falta corrigir o keypressed para exibir na caixa de texto o valor correto
-    // ###################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     switch (keyPressed) {
         case 'ArrowUp':
             if (numberValue >= 10) {
                 numberValue = 10;
+                numberInput.value = numberValue;
             } else {
-            console.log("numberValue= " + numberValue);
                 numberValue++;
+                numberInput.value = numberValue;
             }
+            generateConsoleLog();
             break;
-            case 'ArrowDown':
-                if (numberValue < 0) {
-                    numberValue = 0;
-                }
-                console.log("numberValue= " + numberValue);
+        case 'ArrowDown':
+            if (numberValue <= 0) {
+                numberValue = 0;
+                numberInput.value = numberValue;
+            } else {
                 numberValue--;
+                numberInput.value = numberValue;
+            }
+            generateConsoleLog();
             break;
         case 'Enter':
-            if (mainWindow.classList.contains('hide')) {
-                handleTryClick(e);
-            }
             if (tryAgainWindow.classList.contains('hide')) {
-                console.log('aqui no try again');
+                handleTryClick(e);
+            } else {
                 handleResetClick(e);
             }
+            generateConsoleLog();
             break;
+        default:
+            generateConsoleLog();
     };
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// btnPlayAgain.addEventListener('keydown', (e) => {
-//     if (e.key == 'Enter' && mainWindow.classList.contains('hide')) {
-//         handleResetClick();
-//     };
-// });
-
+// handle btnTry and btnPlayAgain buttons to apply correct behavior
 btnTry.addEventListener('click', handleTryClick);
 btnPlayAgain.addEventListener('click', handleResetClick);
 
+// check if automatically generated number is equal the text box number
 function handleTryClick(e) {
     e.preventDefault();
-
-    //console.log("aqui tryclick");
 
     if (randomNumber === Number(numberInput.value)) {
         toggleScreen();
@@ -123,15 +67,30 @@ function handleTryClick(e) {
 };
 
 // reset game
+function resetGame() {
+    generateRandomNumber();
+    numberInput.value = 0;
+    countAttempts = 1;
+}
 
+// reset game after found the correct answer
 function handleResetClick(e) {
     toggleScreen();
-    countAttempts = 1;
+    resetGame();
 };
 
+// generate random number between 0 and 10 (inclusive)
+function generateRandomNumber() {
+    randomNumber = Math.round(Math.random() * 10);
+}
+
+// change between game screens
 function toggleScreen() {
     mainWindow.classList.toggle("hide");
     tryAgainWindow.classList.toggle("hide");
 };
 
-
+// Uncomment inner function lines to generate console log
+function generateConsoleLog() {
+    //console.log(`Debug \nrandomNumber = ${randomNumber}\nnumberValue  = ${numberValue}`);
+}
