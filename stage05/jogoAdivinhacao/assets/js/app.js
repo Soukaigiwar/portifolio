@@ -8,7 +8,7 @@ const btnPlayAgain = document.querySelector('#btnPlayAgain');
 let randomNumber;
 let countAttempts;
 
-// reset game to initialize then
+// reset game to initialize 
 resetGame();
 
 // event listener
