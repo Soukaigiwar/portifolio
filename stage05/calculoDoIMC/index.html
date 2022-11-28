@@ -22,11 +22,11 @@
             <form>
                 <div class="input-wrapper">
                     <label for="peso">Peso (kg)</label>
-                    <input type="text" id="peso" placeholder="60kg">
+                    <input type="number" id="peso" placeholder="60kg">
                 </div>
                 <div class="input-wrapper">
                     <label for="altura">Altura (cm)</label>
-                    <input type="text" id="altura" placeholder="175cm">
+                    <input type="number" id="altura" placeholder="175cm">
                 </div>
 
                 <button type="submit">
@@ -35,7 +35,7 @@
             </form>
         </div>
 
-        <div class="modal-wrapper show">
+        <div class="modal-wrapper hide">
             <div class="modal resultWindow">
                 <h2>Seu IMC é de 28</h2>
                 <button type="submit">
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="errorLabel">
+        <div class="error-label hide">
             Digite somente números
         </div>
 
