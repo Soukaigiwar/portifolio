@@ -22,14 +22,14 @@
             <form>
                 <div class="input-wrapper">
                     <label for="peso">Peso (kg)</label>
-                    <input type="number" id="peso" placeholder="60kg">
+                    <input type="number" id="weight" placeholder="60kg">
                 </div>
                 <div class="input-wrapper">
                     <label for="altura">Altura (cm)</label>
-                    <input type="number" id="altura" placeholder="175cm">
+                    <input type="number" id="height" placeholder="175cm">
                 </div>
 
-                <button type="submit">
+                <button type="submit" id="calc">
                     Calcular IMC <img src="./assets/svg/arrow.svg" alt="Seta apontando para direita">
                 </button>
             </form>
@@ -38,13 +38,13 @@
         <div class="modal-wrapper hide">
             <div class="modal resultWindow">
                 <h2>Seu IMC é de 28</h2>
-                <button type="submit">
+                <button type="submit" id="closeModal">
                     <img src="./assets/svg/close.svg" alt="Xis para fechar aviso.">
                 </button>
             </div>
         </div>
 
-        <div class="error-label hide">
+        <div class="error-label">
             Digite somente números
         </div>
 
