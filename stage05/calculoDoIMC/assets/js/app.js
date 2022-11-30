@@ -1,28 +1,11 @@
+import { Modal } from './Modal.js';
+ 
 // Capture elements
 const form = document.querySelector('form');
 const inputWeight = document.querySelector('#weight');
 const inputHeight = document.querySelector('#height');
 const btnCalc = document.querySelector('#calc');
-// const btnClose = document.querySelector('#closeModal');
 
-const Modal = {
-    errorMessage: document.querySelector('.error-label'),
-    wrapper: document.querySelector('.modal-wrapper'),
-    resultMessage: document.querySelector('h2'),
-    btnClose: document.querySelector('#closeModal'),
-    showModalWrapper() {
-        Modal.wrapper.classList.add('show');
-    },
-    hideModalWrapper() {
-        Modal.wrapper.classList.remove('show');
-    },
-    showErrorMessage() {
-        Modal.errorMessage.classList.add('show');
-    },
-    hideErrorMessage() {
-        Modal.errorMessage.classList.remove('show');
-    },
-}
 
 // handle close button on result popup (modal)
 Modal.btnClose.onclick = () => {
@@ -57,7 +40,7 @@ form.onsubmit = event => {
 
 // Calculate IMC
 function calculateIMC(weight, height) {
-    return Math.round(calc = weight / ((height/100) ** 2));
+    return Math.round(weight / ((height/100) ** 2));
 }
 
 // Show popup (modal) with IMC calculate result
