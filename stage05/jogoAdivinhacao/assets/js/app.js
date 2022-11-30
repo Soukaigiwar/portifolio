@@ -12,8 +12,8 @@ let countAttempts;
 resetGame();
 
 // event listener
-document.addEventListener('keydown', (e) => {
-    let keyPressed = e.key;
+document.addEventListener('keydown', (event) => {
+    let keyPressed = event.key;
 
     switch (keyPressed) {
         case 'ArrowUp':
