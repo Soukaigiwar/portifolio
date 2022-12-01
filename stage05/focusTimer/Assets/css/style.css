@@ -2,19 +2,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: 1px solid red; */
 }
 
 :root {
-    font-size: 62.5%;
-
-    /* element's colors */
+    --base-color: 192;
     --bg-main: #121214;
-    
-    --fg-time: white;
+    --bg-controls-light: hsla(var(--base-color), 100%, 63%, 0.13);
+    --bg-controls: hsl(var(--base-color), 100%, 63%);
+    --fg-timer: white;
+
+    font-size: 62.5%;
 }
 
 body {
     background: var(--bg-main);
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -24,40 +27,46 @@ body {
 }
 
 .timer {
-    font-family: 'Roboto';
-    /* font-style: normal; */
     font-weight: 700;
     font-size: 8.8rem;
     line-height: 10.3rem;
     text-align: center;
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     
-    color: #FFFFFF;
+    color: var(--fg-timer);
 
+    display: flex;
     margin-top: 24.6rem;
-    margin-bottom: 1.6rem;
 }
 
 .timer_controls {
-
+    
     width: 22.8rem;
     height: 10.8rem;
-    padding: 2.2rem 4.0rem;
-
-    background: rgba(66, 211, 255, 0.13);
+    
+    
+    background: var(--bg-controls-light);
     border-radius: 50rem;
-}
+    
+    display: flex;
+    flex-direction: row;
+    padding: 2.2rem 4rem;
+    gap: 3.2rem;
 
-.play_pause {
-    position: relative;
 }
 
 .button_play,
 .button_pause,
 .button_stop,
-.button_reset
-{
-    position: absolute;
+.button_reset,
+.mute_unmute {
+    cursor: pointer;
+}
+
+.button_play svg path,
+.button_pause svg path,
+.button_unmute svg path{
+    fill: var(--bg-controls);
 }
 
 .mute_unmute {
@@ -67,6 +76,5 @@ body {
 }
 
 .hide {
-    opacity: 0;
-    visibility: hidden;
+    display: none;
 }
