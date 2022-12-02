@@ -16,19 +16,26 @@
 }
 
 body {
+    display: grid;
     background: var(--bg-main);
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    
 }
 
 .container {
-    display: grid;
-    height: 100vh;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: flex-end;
+    align-items: center;
+    
+    gap: 1.6rem; 
 }
 
 .timer {
     font-weight: 700;
-    font-size: 8.8rem;
+    font-size: clamp(4rem, 4rem + 10vw, 8.8rem);
     line-height: 10.3rem;
     text-align: center;
     text-transform: uppercase;
@@ -36,31 +43,30 @@ body {
     color: var(--fg-timer);
 
     display: flex;
-    margin-top: 24.6rem;
 }
 
 .timer_controls {
-    
-    width: 22.8rem;
-    height: 10.8rem;
-    
-    
     background: var(--bg-controls-light);
-    border-radius: 50rem;
     
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     padding: 2.2rem 4rem;
-    gap: 3.2rem;
-
+    gap: clamp(1.5rem, .1rem + 5vw, 3.2rem);
+    
+    width: clamp(10rem, 12rem + 30vw, 22.8rem);
+    height: clamp(8rem, 5rem + 10vh, 10.8rem);
+    
+    border-radius: 9999px;
 }
 
-.button_play,
-.button_pause,
-.button_stop,
-.button_reset,
-.mute_unmute {
+.button {
     cursor: pointer;
+}
+
+.button svg {
+    width: clamp(6.4rem, 1rem + 6vw, 6.4rem);
 }
 
 .button_play svg path,
@@ -69,10 +75,13 @@ body {
     fill: var(--bg-controls);
 }
 
-.mute_unmute {
-    position: absolute;
-    right: 4.0rem;
-    bottom: 3.2rem;
+.muted_unmuted {
+    position: grid;
+    justify-self: end;
+    align-self: end;
+    padding: 4rem 3.2rem;
+    /* right: 4.0rem;
+    bottom: 3.2rem; */
 }
 
 .hide {
