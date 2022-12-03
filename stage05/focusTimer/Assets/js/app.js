@@ -1,18 +1,43 @@
 import { Controls } from "./playerControl.js"
-import { runTimer } from "./timer.js"
+import { Timer } from "./timer.js"
 
-let minutes
-let seconds = 0
+let minutesOnTimer = Timer().minutes
+let secondsOnTimer = Timer().seconds
+
+let setMinutes = Number(minutesOnTimer.textContent)
+
+function timeout() {
+    setTimeout(function () {
+        let seconds = Number(secondsOnTimer.textContent)
+        let minutes = Number(minutesOnTimer.textContent)
+
+        if (seconds <= 0) {
+            seconds = 60
+            minutes--
+        }
+
+        if (minutes < 0) {
+            Controls.togglePause()
+            Controls.toggleStop()
+            minutesOnTimer.textContent = String(setMinutes).padStart(2, "0")
+            return
+        }
+
+        --seconds
+        secondsOnTimer.textContent = String(seconds).padStart(2, "0")
+        minutesOnTimer.textContent = String(minutes).padStart(2, "0")
+
+        timeout()
+    }, 20)
+}
 
 Controls.buttonPlay.addEventListener('click', () => {
     Controls.togglePlay()
-    runTimer(minutes, seconds)
+    //runTimer(minutes, seconds)
+    timeout()
 })
 
 Controls.buttonPause.addEventListener('click', () => {
-    minutes = document.querySelector('.minutes').innerHTML
-    seconds = document.querySelector('.seconds').innerHTML
-    clearTimeout()
     Controls.togglePause()
 })
 
@@ -21,7 +46,8 @@ Controls.buttonStop.addEventListener('click', () => {
 })
 
 Controls.buttonReset.addEventListener('click', () => {
-    minutes = prompt('Quantos minutos?')
+    setMinutes = prompt('Quantos minutos?')
+    minutesOnTimer.textContent = setMinutes.padStart(2, "0")
 })
 
 Controls.buttonMuted.addEventListener('click', () => {
