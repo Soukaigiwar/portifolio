@@ -1,30 +1,35 @@
-import { Controls } from "./playerControl.js";
+import { Controls } from "./playerControl.js"
+import { runTimer } from "./timer.js"
 
-Controls.buttonPlay.onclick = () => {
+let minutes
+let seconds = 0
+
+Controls.buttonPlay.addEventListener('click', () => {
     Controls.togglePlay()
-    //Controls.togglePause()
-    //Controls.toggleStop()
-}
+    runTimer(minutes, seconds)
+})
 
-Controls.buttonPause.onclick = () => {
-    // Controls.togglePlay()
+Controls.buttonPause.addEventListener('click', () => {
+    minutes = document.querySelector('.minutes').innerHTML
+    seconds = document.querySelector('.seconds').innerHTML
+    clearTimeout()
     Controls.togglePause()
-}
+})
 
-Controls.buttonStop.onclick = () => {
+Controls.buttonStop.addEventListener('click', () => {
     Controls.toggleStop()
-    Controls.toggleReset()
-}
+})
 
-Controls.buttonReset.onclick = () => {
-    Controls.applyReset()
-}
-Controls.buttonMuted.onclick = () => {
+Controls.buttonReset.addEventListener('click', () => {
+    minutes = prompt('Quantos minutos?')
+})
+
+Controls.buttonMuted.addEventListener('click', () => {
     Controls.toggleMuted()
     Controls.toggleUnmuted()
-}
+})
 
-Controls.buttonUnmuted.onclick = () => {
+Controls.buttonUnmuted.addEventListener('click', () => {
     Controls.toggleMuted()
     Controls.toggleUnmuted()
-}
+})

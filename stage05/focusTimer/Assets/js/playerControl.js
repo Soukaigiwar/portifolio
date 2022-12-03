@@ -17,9 +17,10 @@ export const Controls = {
         Controls.buttonPause.classList.add('hide')
     },
     toggleStop() {
-        Controls.buttonStop.classList.toggle('hide')
-        Controls.buttonPause.classList.add('hide')
         Controls.buttonPlay.classList.remove('hide')
+        Controls.buttonPause.classList.add('hide')
+        Controls.buttonStop.classList.add('hide')
+        Controls.buttonReset.classList.remove('hide')
     },
     applyReset() {
         console.log("clicou no reset")
