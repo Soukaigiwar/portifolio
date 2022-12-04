@@ -1,15 +1,13 @@
 import { Controls } from "./playerControl.js"
 import { Timer } from "./timer.js"
 
-let minutesOnTimer = Timer().minutes
-let secondsOnTimer = Timer().seconds
-
-let setMinutes = Number(minutesOnTimer.textContent)
+let setMinutes = Timer.getMinutes
+const deltaTime = .01
 
 function timeout() {
     setTimeout(function () {
-        let seconds = Number(secondsOnTimer.textContent)
-        let minutes = Number(minutesOnTimer.textContent)
+        let seconds = Timer.seconds.textContent
+        let minutes = Timer.minutes.textContent
 
         if (seconds <= 0) {
             seconds = 60
@@ -17,23 +15,20 @@ function timeout() {
         }
 
         if (minutes < 0) {
-            Controls.togglePause()
-            Controls.toggleStop()
-            minutesOnTimer.textContent = String(setMinutes).padStart(2, "0")
+            Controls.resetControl()
+            Timer.handleTimerDisplay(setMinutes, 0)
             return
         }
 
         --seconds
-        secondsOnTimer.textContent = String(seconds).padStart(2, "0")
-        minutesOnTimer.textContent = String(minutes).padStart(2, "0")
+        Timer.handleTimerDisplay(minutes, seconds)
 
         timeout()
-    }, 20)
+    }, 1000 * deltaTime)
 }
 
 Controls.buttonPlay.addEventListener('click', () => {
     Controls.togglePlay()
-    //runTimer(minutes, seconds)
     timeout()
 })
 
@@ -42,12 +37,19 @@ Controls.buttonPause.addEventListener('click', () => {
 })
 
 Controls.buttonStop.addEventListener('click', () => {
-    Controls.toggleStop()
+    Controls.resetControl()
 })
 
 Controls.buttonReset.addEventListener('click', () => {
-    setMinutes = prompt('Quantos minutos?')
-    minutesOnTimer.textContent = setMinutes.padStart(2, "0")
+    console.log(Timer.getMinutes);
+    Timer.getMinutes = prompt('Quantos minutos?')
+    console.log(Timer.getMinutes);
+    // if (Timer.getMinutes) {
+    //     Timer.handleTimerDisplay(Timer.getMinutes, 0)
+    // } 
+    // else {
+    //     Timer.handleTimerDisplay(getMinutes, 0)
+    // }
 })
 
 Controls.buttonMuted.addEventListener('click', () => {

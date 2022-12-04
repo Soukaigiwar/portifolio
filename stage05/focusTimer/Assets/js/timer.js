@@ -1,29 +1,11 @@
-export function Timer() {
-    return {
-        minutes: document.querySelector('.minutes'),
-        seconds: document.querySelector('.seconds'),
+export const Timer = {
+    minutes: document.querySelector('.minutes'),
+    seconds: document.querySelector('.seconds'),
+    getMinutes: document.querySelector('.minutes').textContent,
+    handleTimerDisplay(minutes, seconds) {
+        return {
+            minutes: this.minutes.innerHTML = String(minutes).padStart(2, "0"),
+            seconds: this.seconds.innerHTML = String(seconds).padStart(2, "0")
+        }
     }
 }
-
-// export function runTimer(minutes, seconds) {
-
-//     Timer().minutes.innerHTML = String(minutes).padStart(2, "0")
-//     Timer().seconds.innerHTML = String(seconds).padStart(2, "0")
-
-//     setTimeout(timeOut, 1000)
-
-//     function timeOut() {
-//         if (seconds <= 0) {
-//             minutes--
-//             seconds = 60
-//         }
-
-//         if (minutes < 0) {
-//             return
-//         }
-
-//         seconds--
-
-//         runTimer(minutes, seconds)
-//     }
-// }
