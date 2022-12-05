@@ -5,7 +5,6 @@ export const Controls = {
     buttonReset: document.querySelector('.button_reset'),
     buttonMuted: document.querySelector('.button_muted'),
     buttonUnmuted: document.querySelector('.button_unmuted'),
-
     togglePlay() {
         Controls.buttonPlay.classList.add('hide')
         Controls.buttonPause.classList.remove('hide')
