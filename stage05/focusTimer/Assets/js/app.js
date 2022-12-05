@@ -1,33 +1,34 @@
 import { Controls } from "./playerControl.js"
 import { Timer } from "./timer.js"
+import { Env } from "./env.js"
 
-Controls.buttonPlay.addEventListener('click', () => {
+Env.buttonPlay.addEventListener('click', () => {
     Controls.togglePlay()
     Timer.timeout()
 })
 
-Controls.buttonPause.addEventListener('click', () => {
+Env.buttonPause.addEventListener('click', () => {
     Controls.togglePause()
     Timer.hold()
 })
 
-Controls.buttonStop.addEventListener('click', () => {
+Env.buttonStop.addEventListener('click', () => {
     Timer.hold()
     Timer.clear()
     Controls.resetControl()
 })
 
-Controls.buttonReset.addEventListener('click', () => {
+Env.buttonReset.addEventListener('click', () => {
     const minutes = prompt('Quantos minutos?')
     Timer.setMinutes(minutes)
 })
 
-Controls.buttonMuted.addEventListener('click', () => {
+Env.buttonMuted.addEventListener('click', () => {
     Controls.toggleMuted()
     Controls.toggleUnmuted()
 })
 
-Controls.buttonUnmuted.addEventListener('click', () => {
+Env.buttonUnmuted.addEventListener('click', () => {
     Controls.toggleMuted()
     Controls.toggleUnmuted()
 })

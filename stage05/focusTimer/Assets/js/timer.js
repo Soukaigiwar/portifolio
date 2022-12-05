@@ -1,14 +1,15 @@
+import { Env } from "./env.js"
 import { Controls } from "./playerControl.js"
 
 let timerTimeOut
 
 export const Timer = {
-    // Debug only: Set speed of running seconds in tests.
-    // .1 to 10x faster
-    // .01 to 100x faster
-    // .001 to 1000x faster
-    // 1 to normal timming
-    deltaTime: .001,
+    // // Debug only: Set speed of running seconds in tests.
+    // // .1 to 10x faster
+    // // .01 to 100x faster
+    // // .001 to 1000x faster
+    // // 1 to normal timming
+    // deltaTime: .001,
 
     minutes: document.querySelector('.minutes'),
     seconds: document.querySelector('.seconds'),
@@ -44,7 +45,7 @@ export const Timer = {
             Timer.handleTimerDisplay(minutes, seconds)
 
             Timer.timeout()
-        }, 1000 * this.deltaTime)
+        }, 1000 * Env.deltaTime)
     },
     hold() {
         clearTimeout(timerTimeOut)
