@@ -31,14 +31,14 @@ Env.buttonReset.addEventListener('click', () => {
 })
 
 Env.buttonMuted.addEventListener('click', () => {
-    Sound.bgMusicPause()
+    Sound.bgMusicPlay()
     Sound.buttonClick()
     Controls.toggleMuted()
     Controls.toggleUnmuted()
 })
 
 Env.buttonUnmuted.addEventListener('click', () => {
-    Sound.bgMusicPlay()
+    Sound.bgMusicPause()
     Sound.buttonClick()
     Controls.toggleMuted()
     Controls.toggleUnmuted()

@@ -11,5 +11,5 @@ export const Env = {
     // .01 to 100x faster
     // .001 to 1000x faster
     // 1 to normal timming
-    deltaTime: 1,
+    deltaTime: .001,
 }

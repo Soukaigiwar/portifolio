@@ -11,6 +11,7 @@ export const Sound = {
     },
     bgMusicPlay() {
         this.bgAudio.play()
+        this.bgAudio.loop = true
     },
     bgMusicPause() {
         this.bgAudio.pause()
