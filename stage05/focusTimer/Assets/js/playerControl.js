@@ -1,4 +1,5 @@
 import { Env } from "./env.js"
+import { Sound } from "./sounds.js"
 
 export const Controls = {
     togglePlay() {

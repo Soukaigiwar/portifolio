@@ -5,5 +5,14 @@ export const Sound = {
     
     buttonClick() {
         this.buttonPress.play()
+    },
+    timeout() {
+        this.kitchenTimer.play()
+    },
+    bgMusicPlay() {
+        this.bgAudio.play()
+    },
+    bgMusicPause() {
+        this.bgAudio.pause()
     }
 }
