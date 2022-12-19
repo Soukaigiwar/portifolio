@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+:root {
+    --base-color: 240;
+    --bg-main: white;
+    --bg-controls: hsl(var(--base-color), 6%, 21%);
+    --fg-timer: #323238;
+    --bg-themes-button: #E1E1E6;
+    ;
+
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    background: var(--bg-main);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    align-items: center;
+    gap: 10rem;
+}
+
+.timer {
+    display: flex;
+
+    font-size: 12.6rem;
+    align-items: center;
+    justify-content: center;
+    width: 32.1rem;
+    margin: 4.8rem auto;
+    
+    color: var(--fg-timer);
+}
+
+.timer_controls {
+    display: flex;
+    justify-content:space-between;
+    width: 31.2rem;
+    margin: 0 auto;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button svg path {
+    fill: var(--bg-controls);
+}
+
+.themes {
+    display: flex;
+    width: 30.8rem;
+    height: 33.6rem;
+    margin: 3.2rem auto;
+}
+
+.forest,
+.rain,
+.coffee,
+.fireplace {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    width: 13.8rem;
+    height: 15.2rem;
+    margin: 1.8rem;
+    padding: 3.2rem;
+    gap: 3.2rem;
+
+    background: var(--bg-themes-button);
+    border-radius: 2.4rem;
+}
+
+.muted_unmuted {
+    position: grid;
+    justify-self: end;
+    align-self: end;
+    padding: 4rem 3.2rem;
+}
+
+.hide {
+    display: none;
+}
