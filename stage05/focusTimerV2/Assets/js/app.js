@@ -2,6 +2,7 @@ import { Controls } from "./playerControl.js"
 import { Timer } from "./timer.js"
 import { Env } from "./env.js"
 import { Sound } from "./sounds.js"
+import { Themes } from "./themes.js"
 
 Env.buttonPlay.addEventListener('click', () => {
     Sound.buttonClick()
@@ -22,16 +23,32 @@ Env.buttonStop.addEventListener('click', () => {
     Controls.resetControl()
 })
 
-Env.buttonMuted.addEventListener('click', () => {
-    Sound.bgMusicPlay()
+Env.buttonPlusFiveMinutes.addEventListener('click', () => {
     Sound.buttonClick()
-    Controls.toggleMuted()
-    Controls.toggleUnmuted()
+    Controls.plusFiveMinutes()
 })
 
-Env.buttonUnmuted.addEventListener('click', () => {
-    Sound.bgMusicPause()
+Env.buttonMinusFiveMinutes.addEventListener('click', () => {
     Sound.buttonClick()
-    Controls.toggleMuted()
-    Controls.toggleUnmuted()
+    Controls.minusFiveMinutes()
+})
+
+Env.buttonForest.addEventListener('click', () => {
+    Sound.buttonClick()
+    Themes.forest()
+})
+
+Env.buttonRain.addEventListener('click', () => {
+    Sound.buttonClick()
+    Themes.rain()
+})
+
+Env.buttonCoffee.addEventListener('click', () => {
+    Sound.buttonClick()
+    Themes.coffee()
+})
+
+Env.buttonFireplace.addEventListener('click', () => {
+    Sound.buttonClick()
+    Themes.fireplace()
 })

@@ -1,4 +1,5 @@
 import { Env } from "./env.js"
+import { Timer } from "./timer.js"
 
 export const Controls = {
     togglePlay() {
@@ -18,10 +19,14 @@ export const Controls = {
         this.togglePlay()
         this.toggleStop()
     },
-    toggleMuted() {
-        Env.buttonMuted.classList.toggle('hide')
+    plusFiveMinutes() {
+        Timer.handleTimerDisplay(
+            Number(Timer.minutes.innerHTML) + 5, Number(Timer.seconds.innerHTML)
+        )
     },
-    toggleUnmuted() {
-        Env.buttonUnmuted.classList.toggle('hide')
-    },
+    minusFiveMinutes() {
+        Timer.handleTimerDisplay(
+            Number(Timer.minutes.innerHTML) - 5, Number(Timer.seconds.innerHTML)
+        )
+    }
 }

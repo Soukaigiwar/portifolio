@@ -8,9 +8,14 @@ export const Timer = {
     minutes: document.querySelector('.minutes'),
     seconds: document.querySelector('.seconds'),
     getMinutes: document.querySelector('.minutes').textContent,
+    getSeconds: document.querySelector('.seconds').textContent,
     setMinutes(minutes) {
         this.getMinutes = minutes
-        this.handleTimerDisplay(this.getMinutes, 0)
+        this.handleTimerDisplay(minutes.innerHTML, seconds.innerHTML)
+    },
+    setSeconds(seconds) {
+        this.getSeconds = seconds
+        this.handleTimerDisplay(this.minutes.innerHTML, this.seconds.innerHTML)
     },
     handleTimerDisplay(minutes, seconds) {
         return {
