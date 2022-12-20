@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 :root {
@@ -19,72 +19,71 @@
 }
 
 body {
-    display: flex;
+    display: grid;
+
     background: var(--bg-main);
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     align-items: center;
-    gap: 10rem;
 }
 
-.timer {
+main {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10rem;
+    justify-content: center;
+}
 
+.timer_container {
+    justify-self: center;
+    align-self: center;
+}
+
+.timer_container .timer span{
     font-size: 12.6rem;
     align-items: center;
-    justify-content: center;
-    width: 32.1rem;
-    margin: 4.8rem auto;
     
     color: var(--fg-timer);
 }
 
-.timer_controls {
+.timer_container .timer_controls {
     display: flex;
     justify-content:space-between;
-    width: 31.2rem;
-    margin: 0 auto;
+}
+
+
+.button svg path {
+    fill: var(--bg-controls);
+}
+
+.themes_container {
+    display: grid;
+    grid-template-areas: "A B" "C D";
+    gap: 3.2rem;
 }
 
 .button {
     cursor: pointer;
 }
 
-.button svg path {
-    fill: var(--bg-controls);
-}
-
-.themes {
-    display: flex;
-    width: 30.8rem;
-    height: 33.6rem;
-    margin: 3.2rem auto;
-}
-
 .forest,
 .rain,
 .coffee,
 .fireplace {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
     width: 13.8rem;
     height: 15.2rem;
-    margin: 1.8rem;
-    padding: 3.2rem;
-    gap: 3.2rem;
+    padding: 4.8rem 4.3rem;
 
     background: var(--bg-themes-button);
     border-radius: 2.4rem;
 }
 
-.muted_unmuted {
+/* .muted_unmuted {
     position: grid;
     justify-self: end;
     align-self: end;
     padding: 4rem 3.2rem;
-}
+} */
 
 .hide {
     display: none;
