@@ -34,21 +34,25 @@ Env.buttonMinusFiveMinutes.addEventListener('click', () => {
 })
 
 Env.buttonForest.addEventListener('click', () => {
+    Sound.bgMusicForest()
     Sound.buttonClick()
     Themes.forest()
 })
 
 Env.buttonRain.addEventListener('click', () => {
+    Sound.bgMusicRain()
     Sound.buttonClick()
     Themes.rain()
 })
 
 Env.buttonCoffee.addEventListener('click', () => {
+    Sound.bgMusicCoffee()
     Sound.buttonClick()
     Themes.coffee()
 })
 
 Env.buttonFireplace.addEventListener('click', () => {
+    Sound.bgMusicFireplace()
     Sound.buttonClick()
     Themes.fireplace()
 })

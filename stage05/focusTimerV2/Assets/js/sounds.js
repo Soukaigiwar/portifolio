@@ -1,7 +1,10 @@
 export const Sound = {
-    buttonPress : new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/button-press.wav?raw=true"),
-    kitchenTimer : new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true"),
-    bgAudio : new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/bg-audio.mp3?raw=true"),
+    buttonPress : new Audio("https://github.com/Soukaigiwar/portifolio/blob/main/stage05/focusTimerV2/Assets/audio/audios_button-press.wav?raw=true"),
+    kitchenTimer : new Audio("https://github.com/Soukaigiwar/portifolio/blob/main/stage05/focusTimerV2/Assets/audio/audios_kichen-timer.mp3?raw=true"),
+    bgAudioForest : new Audio("https://github.com/Soukaigiwar/portifolio/blob/main/stage05/focusTimerV2/Assets/audio/Floresta.wav?raw=true"),
+    bgAudioRain : new Audio("https://github.com/Soukaigiwar/portifolio/blob/main/stage05/focusTimerV2/Assets/audio/Chuva.wav?raw=true"),
+    bgAudioCoffee : new Audio("https://github.com/Soukaigiwar/portifolio/blob/main/stage05/focusTimerV2/Assets/audio/Cafeteria.wav?raw=true"),
+    bgAudioFireplace : new Audio("https://github.com/Soukaigiwar/portifolio/blob/main/stage05/focusTimerV2/Assets/audio/Lareira.wav?raw=true"),
     
     buttonClick() {
         this.buttonPress.play()
@@ -9,11 +12,50 @@ export const Sound = {
     timeout() {
         this.kitchenTimer.play()
     },
-    bgMusicPlay() {
-        this.bgAudio.play()
-        this.bgAudio.loop = true
+    bgMusicForest() {
+        if(this.bgAudioForest.paused) {
+            this.bgMusicPause()
+            this.bgAudioForest.play()
+        }
+        else {
+            this.bgAudioForest.pause()
+        }
+        this.bgAudioForest.loop = true
+    },
+    bgMusicRain() {
+        if(this.bgAudioRain.paused) {
+            this.bgMusicPause()
+            this.bgAudioRain.play()
+        }
+        else {
+            this.bgAudioRain.pause()
+        }
+        this.bgAudioRain.loop = true
+    },
+    bgMusicCoffee() {
+        if(this.bgAudioCoffee.paused) {
+            this.bgMusicPause()
+            this.bgAudioCoffee.play()
+        }
+        else {
+            this.bgAudioCoffee.pause()
+        }
+        this.bgAudioCoffee.loop = true
+    },
+    bgMusicFireplace() {
+        if(this.bgAudioFireplace.paused) {
+            this.bgMusicPause()
+            this.bgAudioFireplace.play()
+        }
+        else {
+            this.bgAudioFireplace.pause()
+        }
+        this.bgAudioFireplace.loop = true
     },
     bgMusicPause() {
-        this.bgAudio.pause()
+        this.bgAudioForest.pause()
+        this.bgAudioRain.pause()
+        this.bgAudioCoffee.pause()
+        this.bgAudioFireplace.pause()
     }
 }
