@@ -75,7 +75,7 @@ main {
 .fireplace {
     width: 13.8rem;
     height: 15.2rem;
-    padding: 4.8rem 4.3rem;
+    padding: 2.4rem 4.7rem;
 
     background: var(--bg-themes-button);
     border-radius: 2.4rem;
@@ -84,10 +84,28 @@ main {
 
 .volumeControl{
     position: absolute;
-    left: 2.5rem;
-    bottom: 2rem;
-    width: 10rem;
-  }
+    left: 2.4rem;
+    bottom: 2.4rem;
+    width: 9rem;
+    cursor: pointer;
+    
+}
+
+input[type="range"],
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background-color: var(--fg-timer);
+    border-radius: 50px;
+    height: .4rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-top: -0.6rem;
+    background-color: var(--fg-timer);
+}
 
 .hide {
     display: none;
