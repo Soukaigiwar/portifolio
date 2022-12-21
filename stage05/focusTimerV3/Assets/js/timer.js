@@ -18,6 +18,9 @@ export const Timer = {
         this.handleTimerDisplay(this.minutes.innerHTML, this.seconds.innerHTML)
     },
     handleTimerDisplay(minutes, seconds) {
+        if (minutes <= 0) {
+            return
+        }
         return {
             minutes: this.minutes.innerHTML = String(minutes).padStart(2, "0"),
             seconds: this.seconds.innerHTML = String(seconds).padStart(2, "0")
