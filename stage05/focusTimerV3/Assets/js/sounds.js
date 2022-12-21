@@ -21,6 +21,7 @@ export const Sound = {
             this.bgAudioForest.pause()
         }
         this.bgAudioForest.loop = true
+        this.bgAudioForest.volume = 0.5
     },
     bgMusicRain() {
         if(this.bgAudioRain.paused) {
@@ -31,6 +32,7 @@ export const Sound = {
             this.bgAudioRain.pause()
         }
         this.bgAudioRain.loop = true
+        this.bgAudioRain.volume = 0.5
     },
     bgMusicCoffee() {
         if(this.bgAudioCoffee.paused) {
@@ -41,6 +43,7 @@ export const Sound = {
             this.bgAudioCoffee.pause()
         }
         this.bgAudioCoffee.loop = true
+        this.bgAudioCoffee.volume = 0.5
     },
     bgMusicFireplace() {
         if(this.bgAudioFireplace.paused) {
@@ -51,6 +54,7 @@ export const Sound = {
             this.bgAudioFireplace.pause()
         }
         this.bgAudioFireplace.loop = true
+        this.bgAudioFireplace.volume = 0.5
     },
     bgMusicPause() {
         this.bgAudioForest.pause()

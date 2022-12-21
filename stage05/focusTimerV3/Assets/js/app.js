@@ -39,10 +39,18 @@ Env.buttonForest.addEventListener('click', () => {
     Themes.forest()
 })
 
+Env.volumeForest.addEventListener('input', () => {
+    Sound.bgAudioForest.volume = Env.volumeForest.value
+})
+
 Env.buttonRain.addEventListener('click', () => {
     Sound.bgMusicRain()
     Sound.buttonClick()
     Themes.rain()
+})
+
+Env.buttonRain.addEventListener('input', () => {
+    Sound.bgAudioRain.volume = Env.volumeRain.value
 })
 
 Env.buttonCoffee.addEventListener('click', () => {
@@ -51,8 +59,16 @@ Env.buttonCoffee.addEventListener('click', () => {
     Themes.coffee()
 })
 
+Env.buttonCoffee.addEventListener('input', () => {
+    Sound.bgAudioCoffee.volume = Env.volumeCoffee.value
+})
+
 Env.buttonFireplace.addEventListener('click', () => {
     Sound.bgMusicFireplace()
     Sound.buttonClick()
     Themes.fireplace()
+})
+
+Env.buttonFireplace.addEventListener('input', () => {
+    Sound.bgAudioFireplace.volume = Env.volumeFireplace.value
 })
