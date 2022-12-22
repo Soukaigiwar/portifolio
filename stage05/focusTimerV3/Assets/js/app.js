@@ -13,6 +13,7 @@ Env.buttonNight.addEventListener('click', () => {
 })
 
 Env.buttonPlay.addEventListener('click', () => {
+    console.log("aqui");
     Sound.buttonClick()
     Controls.togglePlay()
     Timer.timeout()

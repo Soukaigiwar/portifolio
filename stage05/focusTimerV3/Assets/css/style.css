@@ -37,23 +37,32 @@
 }
 
 body {
-    display: grid;
+    display: flex;
 
     background: var(--bg-main);
     font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    align-items: center;
+    width: 100vw;
+	height: 100vh;
+    align-items: start;
+    justify-content: center;
 }
 
 header {
-    align-self: flex-end;
-    justify-self: end;
-    margin: 3rem 3rem 0 0;
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    
+    justify-content: end;
+    align-items: start;
+    position: fixed;
+    
 }
 
 .buttonNight, .buttonDay {
     background: transparent;
     cursor: pointer;
+    margin: 6rem;
+    z-index: 999;
 }
 
 main {
@@ -61,6 +70,7 @@ main {
     flex-wrap: wrap;
     gap: 10rem;
     justify-content: center;
+    margin-top: 19.6rem;
 }
 
 .timer_container {
@@ -69,6 +79,8 @@ main {
 }
 
 .timer_container .timer span{
+
+    z-index: -999;
     font-size: 12.6rem;
     align-items: center;
     
