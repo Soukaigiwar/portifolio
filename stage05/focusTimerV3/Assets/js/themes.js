@@ -25,4 +25,14 @@ export const Themes = {
         Env.buttonCoffee.classList.remove('selected')
         Env.buttonFireplace.classList.toggle('selected')
     },
+    darkMode() {
+        Env.buttonDay.classList.add('hide')
+        Env.buttonNight.classList.remove('hide')
+        Env.body.classList.toggle('dark_theme')
+    },
+    lightMode() {
+        Env.buttonDay.classList.remove('hide')
+        Env.buttonNight.classList.add('hide')
+        Env.body.classList.toggle('dark_theme')
+    }
 }

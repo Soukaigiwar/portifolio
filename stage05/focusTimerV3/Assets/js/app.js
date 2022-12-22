@@ -4,6 +4,14 @@ import { Env } from "./env.js"
 import { Sound } from "./sounds.js"
 import { Themes } from "./themes.js"
 
+Env.buttonDay.addEventListener('click', () => {
+    Themes.darkMode()
+})
+
+Env.buttonNight.addEventListener('click', () => {
+    Themes.lightMode()
+})
+
 Env.buttonPlay.addEventListener('click', () => {
     Sound.buttonClick()
     Controls.togglePlay()

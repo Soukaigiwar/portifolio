@@ -8,18 +8,32 @@
 }
 
 :root {
-    --base-color: 240;
     --bg-main: white;
-    --bg-controls: hsl(var(--base-color), 6%, 21%);
+    --bg-controls: #393232;
     --fg-timer: #323238;
+    --bg-themes-icon: #393232;
+    --bg-range: white;
     --bg-themes-button: #E1E1E6;
-    --bg-themes-button-hover: #c1c1c6; 
-    --bg-themes-button-selected: #02799D;
+    --bg-themes-button-hover: #00c2fd; 
+    --bg-themes-button-selected: #00a7da;
     --fg-themes-button: #323238;
     --fg-themes-button-selected: white;
-    ;
-
+    
     font-size: 62.5%;
+}
+
+.dark_theme {
+    
+    --bg-main: black;
+    --bg-controls: white;
+    --fg-timer: white;
+    --bg-themes-icon: white;
+    --bg-range: white;
+    --bg-themes-button: #29292E;
+    --bg-themes-button-hover: #6db153; 
+    --bg-themes-button-selected: #3d7726;
+    --fg-themes-button: white;
+    --fg-themes-button-selected: white;
 }
 
 body {
@@ -29,6 +43,17 @@ body {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     align-items: center;
+}
+
+header {
+    align-self: flex-end;
+    justify-self: end;
+    margin: 3rem 3rem 0 0;
+}
+
+.buttonNight, .buttonDay {
+    background: transparent;
+    cursor: pointer;
 }
 
 main {
@@ -55,7 +80,6 @@ main {
     justify-content:space-between;
 }
 
-
 .themes_container {
     display: grid;
     grid-template-areas: "A B" "C D";
@@ -81,6 +105,11 @@ main {
 }
 
 button svg path {
+    /* fill: var(--bg-controls); */
+    fill: var(--bg-themes-icon)
+}
+
+.timer_controls .button svg path {
     fill: var(--bg-controls);
 }
 
@@ -129,7 +158,7 @@ input[type="range"]::-webkit-slider-thumb {
 .selected input[type="range"]::-webkit-slider-thumb,
 .selected input[type="range"]::-webkit-slider-runnable-track {
     fill: var(--fg-themes-button-selected);
-    background: var(--bg-main);
+    background: var(--bg-range);
 }
 
 input[type="range"]::-webkit-slider-thumb,

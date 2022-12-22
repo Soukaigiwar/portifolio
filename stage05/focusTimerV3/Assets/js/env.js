@@ -15,6 +15,10 @@ export const Env = {
     volumeRain: document.querySelector('#volumeRain'),
     volumeCoffee: document.querySelector('#volumeCoffee'),
     volumeFireplace: document.querySelector('#volumeFireplace'),
+
+    body: document.querySelector('body'),
+    buttonDay: document.querySelector('.buttonDay'),
+    buttonNight: document.querySelector('.buttonNight'),
     
     // Debug only: Set speed of running seconds in tests.
     // .1 to 10x faster
