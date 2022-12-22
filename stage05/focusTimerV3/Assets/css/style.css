@@ -13,6 +13,7 @@
     --bg-controls: hsl(var(--base-color), 6%, 21%);
     --fg-timer: #323238;
     --bg-themes-button: #E1E1E6;
+    --bg-themes-button-hover: #c1c1c6; 
     --bg-themes-button-selected: #02799D;
     --fg-themes-button: #323238;
     --fg-themes-button-selected: white;
@@ -55,18 +56,15 @@ main {
 }
 
 
-.button svg path {
-    fill: var(--bg-controls);
-}
-
 .themes_container {
     display: grid;
     grid-template-areas: "A B" "C D";
     gap: 3.2rem;
 }
 
-.button {
+.button, button{
     cursor: pointer;
+    border: none;
 }
 
 .forest,
@@ -76,10 +74,25 @@ main {
     width: 13.8rem;
     height: 15.2rem;
     padding: 2.4rem 4.7rem;
-
+    
     background: var(--bg-themes-button);
     border-radius: 2.4rem;
     position: relative;
+}
+
+button svg path {
+    fill: var(--bg-controls);
+}
+
+button:hover input[type="range"]::-webkit-slider-thumb,
+button:hover input[type="range"]::-webkit-slider-runnable-track,
+button:hover svg path {
+    fill: var(--bg-main);
+    background: var(--bg-main);
+}
+
+button:hover {
+    background: var(--bg-themes-button-hover);
 }
 
 .volumeControl{
@@ -88,14 +101,12 @@ main {
     bottom: 2.4rem;
     width: 9rem;
     cursor: pointer;
-    
 }
 
 input[type="range"],
 input[type="range"]::-webkit-slider-thumb,
 input[type="range"]::-webkit-slider-runnable-track {
     -webkit-appearance: none;
-    background-color: var(--fg-timer);
     border-radius: 50px;
     height: .4rem;
 }
@@ -104,7 +115,6 @@ input[type="range"]::-webkit-slider-thumb {
     width: 1.6rem;
     height: 1.6rem;
     margin-top: -0.6rem;
-    background-color: var(--fg-timer);
 }
 
 .hide {
@@ -115,6 +125,15 @@ input[type="range"]::-webkit-slider-thumb {
     background: var(--bg-themes-button-selected);
 }
 
-.selected svg path {
+.selected svg path,
+.selected input[type="range"]::-webkit-slider-thumb,
+.selected input[type="range"]::-webkit-slider-runnable-track {
     fill: var(--fg-themes-button-selected);
+    background: var(--bg-main);
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-webkit-slider-runnable-track {
+    fill: var(--fg-themes-button);
+    background: var(--fg-themes-button);
 }
