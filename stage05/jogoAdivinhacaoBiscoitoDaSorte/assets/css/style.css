@@ -78,7 +78,8 @@ p {
     text-align: center;
     line-height: 2.9rem;
     font-size: 2.4rem;
-    width: 27.3rem;
+    padding: 1rem;
+    width: 29.3rem;
     
     box-shadow: 2px 2px 2px rgba(85, 85, 85, 0.5);
     background: #E4EDF1;
@@ -97,7 +98,7 @@ p {
     background: #FF9500;
 }
 
-.hide {
+.game .hide {
     display: none;
 }
 
