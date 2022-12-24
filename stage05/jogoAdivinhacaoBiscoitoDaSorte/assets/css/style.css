@@ -8,6 +8,19 @@
 
 :root {
     font-size: 62.5%;
+
+    --fg-main: #FFFFFF;
+    --bg-gradient: linear-gradient(45deg, #190361 0%, #BB00FF 100%);
+    --bg-main: #FFFFFF;
+    --bg-textbox: #E4EDF1;
+    --bg-button: #FF9500;
+    --box-shadow-main: 0px 20px 50px rgba(0, 0, 0, 0.8);
+    --box-shadow-textbox: 2px 2px 2px rgba(85, 85, 85, 0.5);
+
+    --ff-main-title: 'Montserrat', sans-serif;
+    --ff-button: 'DM sans', sans-serif;
+    --ff-textbox: 'Dancing Script';
+    --ff-text: 'DM Sans', sans-serif;
 }
 
 main {
@@ -15,7 +28,9 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(45deg, #190361 0%, #BB00FF 100%);
+    background: var(--bg-gradient);
+    background-size: 400%;
+    animation: bg-animation 10s infinite alternate;
 }
 
 .game .antes {
@@ -34,7 +49,7 @@ main {
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-main-title);
     font-weight: 700px;
     font-size: 2.4rem;
     text-align: center;
@@ -42,7 +57,7 @@ h1 {
 }
 
 p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--ff-text);
     text-align: center;
     line-height: 2rem;
     font-size: 1.5rem;
@@ -64,9 +79,9 @@ p {
     height: 56.4rem;
     margin-top: 4.8rem;
 
-    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    background: #FFFFFF;
+    box-shadow: var(--box-shadow-main);
+    background: var(--bg-main);
 }
 
 .depois h1 {
@@ -74,28 +89,28 @@ p {
 }
 
 .depois p {
-    font-family: 'Dancing Script';
+    font-family: var(--ff-textbox);
     text-align: center;
     line-height: 2.9rem;
     font-size: 2.4rem;
     padding: 1rem;
     width: 29.3rem;
     
-    box-shadow: 2px 2px 2px rgba(85, 85, 85, 0.5);
-    background: #E4EDF1;
+    box-shadow: var(--box-shadow-textbox);
+    background: var(--bg-textbox);
 }
 
 .depois button {
-    font-family: 'DM sans', sans-serif;
+    font-family: var(--ff-button);
     font-size: 1.5rem;
     font-weight: 700;
     width: 17.4rem;
     height: 5.2rem;
     
     border: none;
-    color: #FFFFFF;
+    color: var(--fg-main);
     border-radius: .4rem;
-    background: #FF9500;
+    background: var(--bg-button);
 }
 
 .game .hide {
@@ -104,4 +119,13 @@ p {
 
 .depois .biscoito {
     margin-top: 1.7rem;
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 100%;
+    }
 }
