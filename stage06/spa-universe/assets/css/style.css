@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --bg-main: #000000;
+    --fg-main: #FFFFFF;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--fg-main);
+    min-height: 90vh;
+    background-image: url('../img/mountains-universe-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav {
+    display: flex;
+    justify-content: start;
+    margin: 4rem 7.2rem;
+}
+
+#logo {
+    width: 5rem;
+    height: 4.2rem;
+    margin-right: 3.2rem;    
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+ul {
+    display: flex;
+    font-size: 2.4rem;
+    gap: 3.2rem;
+    list-style: none; 
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--fg-main);
+}
+
+ul li .active {
+    font-weight: 700;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    
+}
+
+main .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 17.2rem;
+    align-items: center;
+}
+
+.content h2 {
+    font-size: 4.8rem;
+}
+
+.content button {
+    width: 19.5rem;
+    height: 4.8rem;
+    margin-top: 2.4rem;
+    background: none;
+    color: var(--fg-main);
+    border: .2rem solid var(--fg-main);
+    border-radius: 5px;
+    text-transform: uppercase;
+}
