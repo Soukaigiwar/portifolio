@@ -20,10 +20,28 @@ body {
     background-color: var(--bg-main);
     color: var(--fg-main);
     min-height: 90vh;
-    background-image: url('../img/mountains-universe-1.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+.home {
+    background-image: url('../img/mountains-universe-1.png');
+}
+
+.o-universo {
+    background-image: url('../img/mountains-universe-2.png');
+}
+
+.exploracao {
+    background-image: url('../img/mountains-universe-3.png');
+}
+
+.error404 {
+    background-image: url('../img/lost-in-universe-4.jpg');
+}
+
+
 
 nav {
     display: flex;
@@ -86,6 +104,13 @@ main .content {
     display: flex;
     flex-direction: column;
     margin-left: 10rem;
+}
+
+.content p {
+    display: flex;
+    justify-content: center;
+    padding: 5rem;
+    margin: 0 auto;
 }
 
 .content button {
