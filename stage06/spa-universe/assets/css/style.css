@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    border: 1px solid red;
 }
 
 :root {
@@ -21,10 +22,14 @@ body {
     color: var(--fg-main);
 }
 
+/* NAV */
+
 nav {
     display: flex;
     position: absolute;
     justify-content: start;
+    align-items: center;
+    gap: 1rem;
     padding: 4rem 7.2rem;
 }
 
@@ -34,10 +39,69 @@ nav {
     margin-right: 3.2rem;    
 }
 
-nav{
+
+ul {
     display: flex;
+    font-size: 2.4rem;
+    gap: 3.2rem;
+    list-style: none; 
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--fg-main);
+}
+
+ul li .active {
+    font-weight: 700;
+}
+
+main {
+    display: flex;
+}
+
+/* MAIN CONTENT */
+
+#app {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    margin-top: 29.4rem;
     align-items: center;
-    gap: 1rem;
+}
+
+#app, h2 {
+    font-size: 4.8rem;
+}
+
+#app p {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#app #content-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#app button {
+    width: 19.5rem;
+    height: 4.8rem;
+    margin-top: 2.4rem;
+    background: none;
+    color: var(--fg-main);
+    border: .2rem solid var(--fg-main);
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#app button:hover {
+    background: var(--bg-secondary);
+    color: var(--fg-secondary);
 }
 
 .home, .o-universo, .exploracao, .error404 {
@@ -68,68 +132,5 @@ p {
     font-size: 1.8rem;
     line-height: 160%;
     width: 64.8rem;
-}
-
-ul {
-    display: flex;
-    font-size: 2.4rem;
-    gap: 3.2rem;
-    list-style: none; 
-}
-
-ul li a {
-    text-decoration: none;
-    color: var(--fg-main);
-}
-
-ul li .active {
-    font-weight: 700;
-}
-
-main {
-    display: flex;
-}
-
-main #content {
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
-    margin-top: 29.4rem;
-    align-items: center;
-}
-
-#content, h2 {
-    font-size: 4.8rem;
-}
-
-#content {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    margin-left: 10rem;
-}
-
-#content p {
-    display: flex;
-    justify-content: center;
-    padding: 5rem;
-    margin: 0 auto;
-}
-
-#content button {
-    width: 19.5rem;
-    height: 4.8rem;
-    margin-top: 2.4rem;
-    background: none;
-    color: var(--fg-main);
-    border: .2rem solid var(--fg-main);
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-#content button:hover {
-    background: var(--bg-secondary);
-    color: var(--fg-secondary);
+    padding: 0;
 }

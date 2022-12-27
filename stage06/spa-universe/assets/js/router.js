@@ -21,15 +21,12 @@ export class Router {
         let routeStr = route.split('/').pop()
         routeStr = routeStr.split('.')[0]
 
-        
         fetch(route)
         .then(data => data.text())
         .then(html => {
             document.querySelector('#app').innerHTML = html
-            document.querySelector('#content').removeAttribute('class')
-            document.querySelector('#content').classList.toggle(routeStr)
+            document.querySelector('main').removeAttribute('class')
+            document.querySelector('main').classList.toggle(routeStr)
             })
-
-        // console.log(route)
     }
 }
