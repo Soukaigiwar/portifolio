@@ -11,28 +11,24 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/app.js" type="module" defer></script>
 </head>
 
-<body class="home">
+<body>
     <nav>
-        <a id="logo" href="#">
+        <a id="logo" href="/" onclick="route()">
             <img src="./assets/img/Vector.svg" alt="Logomarca espiral branca">
         </a>
         <ul>
-            <li><a href="./index.html" class="active">Home</a></li>
-            <li><a href="./o-universo.html">O Universo</a></li>
-            <li><a href="./exploracao.html">Exploração</a></li>
+            <li><a href="./" class="active" onclick="route()">Home</a></li>
+            <li><a href="./o-universo" onclick="route()">O Universo</a></li>
+            <li><a href="./exploracao" onclick="route()">Exploração</a></li>
         </ul>
     </nav>
     <main>
-        <div class="content">
-            <h2>Explore o universo</h2>
-            <form action="#">
-                <button>Quero saber mais</button>
-            </form>
-        </div>
+        <div id="app"></div>
     </main>
+
+    <script src="./assets/js/app.js" type="module"></script>
 </body>
 
 </html>
