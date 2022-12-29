@@ -1,26 +1,19 @@
+import { GithubUser } from "./github-user.js"
+
 export class Favorites {
     constructor(root) {
         this.root = document.querySelector(root)
         
 
         this.load()
+
+        GithubUser.search('soukaigiwar')
+            .then(user => console.log(user))
     }
 
     load() {
-        this.entries = [
-            {
-                login: 'soukaigiwar',
-                name: 'Sergio Mello',
-                public_repos: '88',
-                followers: '15'
-            },
-            {
-                login: 'maykbrito',
-                name: 'Mayk Brito',
-                public_repos: '34',
-                followers: '15909'
-            }
-        ]
+        this.entries = JSON.parse(
+            localStorage.getItem('@github-favorites:')) || []
     }
 
     delete(user) {
