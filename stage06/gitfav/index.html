@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
     <title>GitFav</title>
 </head>
+
 <body>
-    <h1>{&star;} GitFav</h1>
+    <div id="app">
+        <header>
+            <img class="logo" src="./assets/img/gitfav.svg" alt="Logo de uma estrela entre chaves com a palavra GitFav ao lado">
+            <div class="search">
+                <label class="sr-only" for="searchbox">Digite o Github username que quer favoritar</label>
+                <input type="text" name="searchbox" id="searchbox" placeholder="Digite o Github username que quer favoritar">
+                <button><img src="./assets/img/estrela_simples.svg" alt="Botão Favoritar com estrela à esquerda"><span>Favoritar</span></button>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Repositories</th>
+                    <th>Followers</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="user">
+                        <img src="" alt="imagem">
+                        <a href="" target="_blank">
+                            <p>login</p>
+                            <span>nome</span>
+                        </a>
+                    </td>
+                    <td class="repositories">4555</td>
+                    <td class="followers">454</td>
+                    <td>
+                        <p>
+                            Remover
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>

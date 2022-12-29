@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'roboto', sans-serif;
+}
+
+:root {
+    font-size: 62.5%;
+    
+    --bg-main: #030B0D;
+    --fg-main: #fff;
+    
+    --hue: 195;
+    --bg-button: hsl(var(--hue), 91%, 25%);
+    --bg-button-secondary: hsl(var(--hue), 100%, 100%);
+    --fg-button: #fff;
+    --fg-button-secondary: var(--bg-button);
+
+    --bg-th: hsl(var(--hue), 72%, 13%);
+}
+
+body {
+    font-size: 1.6rem;
+    background: var(--bg-main);
+    color: var(--fg-main);
+
+}
+
+#app {
+    max-width: 112rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 11.5rem 0;
+}
+
+/* Desaparece com o label, mas sem atrapalhar o display reader */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.search input {
+    width: 46.2rem;
+    height: 4.8rem;
+
+    font-weight: normal;
+    font-size: 1.6rem;
+
+    border: none;
+    color: #7C7C8A;
+    background: none;
+    padding: 1.6rem;
+}
+
+.search button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    
+    font-weight: bold;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+
+    width: 17rem;
+    height: 4.8rem;
+    background: var(--bg-button);
+    color: var(--fg-button);
+    border: none;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.search button:hover {
+    background: var(--bg-button-secondary);
+    color: var(--fg-button-secondary);
+    transition: .3s  ease-in;
+}
+
+.search button img {
+    width: 2.4rem;
+}
+
+table {
+    width: 112rem;
+    height: 68.8rem;
+    border-spacing: 0;
+    border-radius: 1.2rem;
+    border: 1px solid #4A808C;
+}
+
+table * {
+    font-size: 1.4rem;
+    color: var(--fg-main);
+}
+
+table th{
+    height: 6.4rem;
+    background: var(--bg-th);
+    text-align: start;
+    font-weight: bold;
+    padding: 1.6rem 4rem;    
+}
+
+table th:first-child {
+    border-top-left-radius: 1.2rem;
+}
+
+table th:last-child {
+    border-top-right-radius: 1.2rem;
+}
+
+table tbody {
+    height: 100%;
+    width: 100%; 
+}
+
+table td {
+    padding: 2.4rem 4rem 1.6rem;
+    text-align: start;
+}
+
+td.user {
+    display: flex;
+    align-items: center;
+    
+    
+}
+
+td.user img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 50px;
+}
