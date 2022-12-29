@@ -3,12 +3,9 @@ import { GithubUser } from "./github-user.js"
 export class Favorites {
     constructor(root) {
         this.root = document.querySelector(root)
-        
+
 
         this.load()
-
-        GithubUser.search('soukaigiwar')
-            .then(user => console.log(user))
     }
 
     load() {
@@ -16,13 +13,39 @@ export class Favorites {
             localStorage.getItem('@github-favorites:')) || []
     }
 
+    save() {
+        localStorage.setItem('@github-favorites:', JSON.stringify(this.entries))
+    }
+
+    async add(username) {
+        try {
+            const user = await GithubUser.search(username)
+
+            if (!username) {
+                throw new Error('Precisa digitar algum login do github.')
+            }
+
+            if (user.login === undefined) {
+                throw new Error('Usuário não encontrado.')
+            }
+
+            this.entries = [user, ...this.entries]
+            this.update()
+            this.save()
+
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
     delete(user) {
         const filteredEntries = this.entries.filter(entry =>
             entry.login !== user.login
         )
-        
+
         this.entries = filteredEntries
-        this.update();
+        this.update()
+        this.save()
     }
 }
 
@@ -33,13 +56,27 @@ export class FavoritesView extends Favorites {
         this.tbody = this.root.querySelector('table tbody')
 
         this.update()
+        this.onAdd()
+    }
+
+    onAdd() {
+        const addButton = this.root.querySelector('.search button')
+        addButton.onclick = () => {
+            const { value } = this.root.querySelector('.search input')
+            
+            this.add(value)
+        }
     }
 
     update() {
         this.removeAllTr()
 
-        this.entries.forEach( user => {
+        this.entries.forEach(user => {
             const tr = this.createTr()
+
+            if (user.name === null) {
+                user.name = "_"
+            }
 
             tr.querySelector('.user img').src = `https://github.com/${user.login}.png`
             tr.querySelector('.user img').alt = `Imagem do perfil de ${user.name}.`
@@ -60,10 +97,10 @@ export class FavoritesView extends Favorites {
             this.tbody.append(tr)
         })
     }
-    
+
     createTr() {
         const tr = document.createElement('tr')
-            
+
         tr.innerHTML = `
                     <td class="user">
                         <img src="" alt="">
@@ -88,7 +125,7 @@ export class FavoritesView extends Favorites {
         this.tbody.querySelectorAll('tr')
             .forEach((tr) => {
                 tr.remove()
-        })
+            })
     }
 
 }
