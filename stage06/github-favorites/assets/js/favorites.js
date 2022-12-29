@@ -22,6 +22,15 @@ export class Favorites {
             }
         ]
     }
+
+    delete(user) {
+        const filteredEntries = this.entries.filter(entry =>
+            entry.login !== user.login
+        )
+        
+        this.entries = filteredEntries
+        this.update();
+    }
 }
 
 export class FavoritesView extends Favorites {
@@ -46,6 +55,14 @@ export class FavoritesView extends Favorites {
             tr.querySelector('.user span').textContent = `${user.login}`
             tr.querySelector('.repositories').textContent = `${user.public_repos}`
             tr.querySelector('.followers').textContent = `${user.followers}`
+
+            tr.querySelector('.remove').onclick = () => {
+                const isOk = confirm("Tem certeza que deseja excluir essa linha?")
+
+                if (isOk) {
+                    this.delete(user)
+                }
+            }
 
             this.tbody.append(tr)
         })
