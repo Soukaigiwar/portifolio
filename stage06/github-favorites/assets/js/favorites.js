@@ -19,19 +19,27 @@ export class Favorites {
 
     async add(username) {
         try {
-            const user = await GithubUser.search(username)
+            const userExistsOnTable = this.entries.find(entry =>
+                entry.login.toLowerCase() === username.toLowerCase())
 
-            if (!username) {
-                throw new Error('Precisa digitar algum login do github.')
+            if (!userExistsOnTable) {
+                const user = await GithubUser.search(username)
+
+                if (!username) {
+                    throw new Error('Precisa digitar algum login do github.')
+                }
+
+                if (user.login === undefined) {
+                    throw new Error('Usuário não encontrado.')
+                }
+
+                this.entries = [user, ...this.entries]
+                this.update()
+                this.save()
+
+            } else {
+                throw new Error('Usuário já existe na lista.')
             }
-
-            if (user.login === undefined) {
-                throw new Error('Usuário não encontrado.')
-            }
-
-            this.entries = [user, ...this.entries]
-            this.update()
-            this.save()
 
         } catch (error) {
             alert(error.message)
