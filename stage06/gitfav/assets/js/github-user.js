@@ -1,6 +1,6 @@
 export class GithubUser {
     static searchByUsername(username) {
-        const endpoint = `https://github.com/${username}`
+        const endpoint = `https://api.github.com/users/${username}`
         
         return fetch(endpoint)
             .then(data => data.json())
