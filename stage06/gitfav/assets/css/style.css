@@ -26,6 +26,8 @@
     --bg-odd-tr: var(var(--bg-th));
     --fg-tr-remove: hsl(355, 91%, 66%);
     --bg-scrollbar-thumb: hsl(var(--hue), 31%, 42%);
+    
+    --bd-row: hsl(var(--hue), 31%, 42%, 0.5);
 }
 
 body {
@@ -108,10 +110,6 @@ header {
     background: var(--bg-button-secondary);
     color: var(--fg-button-secondary);
     transition: .3s ease-in;
-}
-
-.search button img {
-    width: 2.4rem;
 }
 
 table {
@@ -220,6 +218,8 @@ table .row {
     height: 10.4rem;
     align-items: center;
     justify-content: space-around;
+    border-bottom: 1px solid var(--bd-row);
+
 }
 
 table td {

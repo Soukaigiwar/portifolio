@@ -95,7 +95,6 @@ export class FavoritesView extends Favorites {
             tr.querySelector('.followers').textContent = `${user.followers}`
 
             tr.querySelector('.actions p').onclick = () => {
-                console.log('aqui');
                 const isOk = confirm("Tem certeza que deseja excluir essa linha?")
 
                 if (isOk) {
