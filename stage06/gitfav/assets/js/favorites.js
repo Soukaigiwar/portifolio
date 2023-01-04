@@ -3,8 +3,6 @@ import { GithubUser } from "./github-user.js"
 export class Favorites {
     constructor(root) {
         this.root = document.querySelector(root)
-
-
         this.load()
     }
 
@@ -63,7 +61,6 @@ export class FavoritesView extends Favorites {
 
         this.tbody = this.root.querySelector('table tbody')
 
-        // this.checkIfExistAnyFav()
         this.update()
         this.onAdd()
     }
@@ -72,7 +69,6 @@ export class FavoritesView extends Favorites {
         const addButton = this.root.querySelector('.search button')
         addButton.onclick = () => {
             const { value } = this.root.querySelector('.search input')
-
             this.add(value)
         }
     }
@@ -83,16 +79,14 @@ export class FavoritesView extends Favorites {
         const entriesLenght = this.entries.length
 
         if (entriesLenght === 0) {
-            const tr = this.createEmptyTr()
+            const tr = this.createNoEntriesMessageTr()
             this.tbody.append(tr)
         }
 
         this.entries.forEach(user => {
             const tr = this.createTr()
 
-            if (user.name === null) {
-                user.name = "_"
-            }
+            user.name = this.replaceEmptyUsernameToUnderscore(user.name)
 
             tr.querySelector('.user img').src = `https://github.com/${user.login}.png`
             tr.querySelector('.user img').alt = `Imagem do perfil de ${user.name}.`
@@ -101,7 +95,6 @@ export class FavoritesView extends Favorites {
             tr.querySelector('.user span').textContent = `/${user.login}`
             tr.querySelector('.repositories').textContent = `${user.public_repos}`
             tr.querySelector('.followers').textContent = `${user.followers}`
-
             tr.querySelector('.actions p').onclick = () => {
                 const isOk = confirm("Tem certeza que deseja excluir essa linha?")
 
@@ -113,18 +106,6 @@ export class FavoritesView extends Favorites {
             this.tbody.append(tr)
         })
     }
-
-    // checkIfExistAnyFav() {
-    //     const existAnyFavorite = localStorage.length
-
-    //     console.log(existAnyFavorite);
-    //     if (existAnyFavorite > 1) {
-    //         console.log('entrou');
-            
-    //         this.createEmptyTr()
-            
-    //     }
-    // }
 
     createTr() {
         const tr = document.createElement('tr')
@@ -150,11 +131,9 @@ export class FavoritesView extends Favorites {
         return tr
     }
 
-    createEmptyTr() {
+    createNoEntriesMessageTr() {
         const tr = document.createElement('tr')
-
         tr.classList.add('row')
-
         tr.innerHTML = `
             <td class="empty">
                 <div>
@@ -171,6 +150,11 @@ export class FavoritesView extends Favorites {
             .forEach((tr) => {
                 tr.remove()
             })
+    }
+
+    replaceEmptyUsernameToUnderscore(username) {
+        const newUserName = username === null ? "_" : username
+        return newUserName
     }
 
 }
