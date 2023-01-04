@@ -4,25 +4,28 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/app.js" type="module" defer></script>
-    
+
     <title>GitFav</title>
 </head>
 
 <body>
     <div id="app">
         <header>
-            <img class="logo" src="./assets/img/gitfav.svg" alt="Logo de uma estrela entre chaves com a palavra GitFav ao lado">
+            <img class="logo" src="./assets/img/gitfav.svg"
+                alt="Logo de uma estrela entre chaves com a palavra GitFav ao lado">
             <div class="search">
                 <label class="sr-only" for="searchbox">Digite o Github username que quer favoritar</label>
-                <input type="text" name="searchbox" id="searchbox" placeholder="Digite o Github username que quer favoritar">
-                <button><img src="./assets/img/estrela_simples.svg" alt="Botão Favoritar com estrela à esquerda"><span>Favoritar</span></button>
+                <input type="text" name="searchbox" id="searchbox"
+                    placeholder="Digite o Github username que quer favoritar">
+                <button><img src="./assets/img/estrela_simples.svg"
+                        alt="Botão Favoritar com estrela à esquerda"><span>Favoritar</span></button>
             </div>
         </header>
         <table>
@@ -35,26 +38,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="row">
-                    <td class="user">
-                        <img src="./assets/img/temp.jpg" alt="imagem">
-                        <a href="" target="_blank">
-                            <p>Sergio Mello</p>
-                            <span>/soukaigiwar</span>
-                        </a>
-                    </td>
-                    <td class="repositories">4555</td>
-                    <td class="followers">454</td>
-                    <td class="actions">
-                        <p class="remove">
-                            Remover
-                        </p>
-                    </td>
-                </tr>
-                
+                <!-- Nenhum Favorito Message or Content List -->
             </tbody>
         </table>
-    </div>
 </body>
 
 </html>

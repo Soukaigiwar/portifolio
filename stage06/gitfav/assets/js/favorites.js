@@ -63,6 +63,7 @@ export class FavoritesView extends Favorites {
 
         this.tbody = this.root.querySelector('table tbody')
 
+        // this.checkIfExistAnyFav()
         this.update()
         this.onAdd()
     }
@@ -78,6 +79,13 @@ export class FavoritesView extends Favorites {
 
     update() {
         this.removeAllTr()
+
+        const entriesLenght = this.entries.length
+
+        if (entriesLenght === 0) {
+            const tr = this.createEmptyTr()
+            this.tbody.append(tr)
+        }
 
         this.entries.forEach(user => {
             const tr = this.createTr()
@@ -106,27 +114,55 @@ export class FavoritesView extends Favorites {
         })
     }
 
+    // checkIfExistAnyFav() {
+    //     const existAnyFavorite = localStorage.length
+
+    //     console.log(existAnyFavorite);
+    //     if (existAnyFavorite > 1) {
+    //         console.log('entrou');
+            
+    //         this.createEmptyTr()
+            
+    //     }
+    // }
+
     createTr() {
         const tr = document.createElement('tr')
+
         tr.classList.add('row')
 
         tr.innerHTML = `
             <td class="user">
-                <img src="./assets/img/temp.jpg" alt="imagem">
+                <img src="" alt="">
                 <a href="" target="_blank">
-                    <p>Sergio Mello</p>
-                    <span>/soukaigiwar</span>
+                    <p></p>
+                    <span></span>
                 </a>
             </td>
-            <td class="repositories">4555</td>
-            <td class="followers">454</td>
+            <td class="repositories"></td>
+            <td class="followers"></td>
             <td class="actions">
                 <p class="remove">
                     Remover
                 </p>
             </td>
         `
+        return tr
+    }
 
+    createEmptyTr() {
+        const tr = document.createElement('tr')
+
+        tr.classList.add('row')
+
+        tr.innerHTML = `
+            <td class="empty">
+                <div>
+                    <img src="./assets/img/estrela.svg" alt="Emoji de estrela lamentando">
+                    <h2>Nenhum favorito ainda</h2>
+                </div>
+            </td>
+        `
         return tr
     }
 

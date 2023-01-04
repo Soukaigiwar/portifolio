@@ -5,21 +5,22 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'roboto', sans-serif;
 }
 
 :root {
     font-size: 62.5%;
-
+    
+    --ff-main: 'roboto', sans-serif;
+    
     --bg-main: #030B0D;
     --fg-main: #fff;
-
+    
     --hue: 195;
     --bg-button: hsl(var(--hue), 91%, 25%);
     --bg-button-secondary: hsl(var(--hue), 100%, 100%);
     --fg-button: #fff;
     --fg-button-secondary: var(--bg-button);
-
+    
     --bg-th: hsl(var(--hue), 72%, 13%);
     --fg-tr: hsl(var(--hue), 9%, 89%);
     --bg-even-tr: hsl(var(--hue), 50%, 8%);
@@ -31,10 +32,10 @@
 }
 
 body {
+    font-family: var(--ff-main);
     font-size: 1.6rem;
     background: var(--bg-main);
     color: var(--fg-main);
-
 }
 
 #app {
@@ -129,10 +130,6 @@ table * {
     color: var(--fg-tr);
 }
 
-thead,
-tbody {
-    display: block;
-}
 
 tbody {
     overflow-y: scroll;
@@ -159,10 +156,11 @@ tbody::-webkit-scrollbar-thumb
 table th {
     width: 112rem;
     height: 6.4rem;
-    background: var(--bg-th);
-    /* azul turquesa */
+    background: var(--bg-th);/* azul turquesa */
     text-align: start;
-    font-weight: bold;
+    font-weight: 700;
+    font-family: var(--ff-main);
+    font-size: 2rem;
 }
 
 table th:first-child {
@@ -181,11 +179,11 @@ table .users,
 }
 
 table .users {
-    width: 50.4rem;
+    width: 49rem;
 }
 
 table .repositories {
-    width: 21.8rem;
+    width: 22rem;
 }
 
 table .followers {
@@ -193,8 +191,8 @@ table .followers {
 }
 
 table .actions {
-    width: 17.8rem;
-    padding-right: 11.5rem;
+    width: 18rem;
+    padding-right: 10.5rem;
 }
 
 table tbody {
@@ -219,11 +217,10 @@ table .row {
     align-items: center;
     justify-content: space-around;
     border-bottom: 1px solid var(--bd-row);
-
 }
 
-table td {
-    padding: 2.4rem 4rem 2.4rem 2.4rem;
+table .row:last-child {
+    border-bottom: none;
 }
 
 td.user {
@@ -272,4 +269,28 @@ td.actions p {
     font-weight: bold;
     color: var(--fg-tr-remove);
     cursor: pointer;
+}
+
+table td.empty {
+    margin: auto;
+    margin-top: 21rem;
+}
+
+td.empty div {
+    display: flex;
+    height: 100%;
+    gap: 6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+td.empty img {
+    width: 12.2rem;
+}
+
+td.empty h2 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 4rem;
+    color: #4E5455;
 }
