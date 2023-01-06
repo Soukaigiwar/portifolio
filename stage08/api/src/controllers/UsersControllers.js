@@ -10,7 +10,7 @@ class UsersControllers {
     create(request, response) {
         const { name, email, passw } = request.body //json
     
-        response.json({ name, email, passw }) //response json
+        response.status(201).json({ name, email, passw }) //response json
     }
 }
 
