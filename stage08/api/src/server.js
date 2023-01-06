@@ -15,3 +15,14 @@ app.get("/", (request, response) => {
 app.get("/hellosergio", (request, response) => {
     response.send('hello sergio!!!')
 })
+
+app.get("/product/:id", (request, response) => {
+    response.send(`Id do produto: ${request.params.id}.`)
+})
+
+app.get("/product/:id/:unit_price", (request, response) => {
+    response.send(`
+        Id do produto: ${request.params.id}.
+        Preço do produto: R$ ${request.params.unit_price}.
+        `)
+})
