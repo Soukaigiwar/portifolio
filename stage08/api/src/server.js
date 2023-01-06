@@ -32,4 +32,5 @@ app.get("/user", (request, response) => {
     const { id, rule } = request.query
 
     response.send(`Id: ${id}, tipo: ${rule}.`)
+    console.log(id, rule);
 })
