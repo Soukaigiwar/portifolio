@@ -1,4 +1,4 @@
-const { application, response } = require('express')
+const { application, response, request } = require('express')
 const express = require('express')
 
 const app = express()
@@ -21,8 +21,15 @@ app.get("/product/:id", (request, response) => {
 })
 
 app.get("/product/:id/:unit_price", (request, response) => {
+    const { id, unit_price } = request.params
     response.send(`
-        Id do produto: ${request.params.id}.
-        Preço do produto: R$ ${request.params.unit_price}.
+        Id do produto: ${id}.
+        Preço do produto: R$ ${unit_price}.
         `)
+})
+
+app.get("/user", (request, response) => {
+    const { id, rule } = request.query
+
+    response.send(`Id: ${id}, tipo: ${rule}.`)
 })
