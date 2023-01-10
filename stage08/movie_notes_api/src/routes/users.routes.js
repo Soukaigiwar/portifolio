@@ -1,11 +1,19 @@
 const { Router } = require("express")
 
+const UsersControllers = require("../controllers/UsersControllers")
+
+const userController = new UsersControllers()
+
 const usersRoutes = Router()
 
-usersRoutes.post("/", (request, response) => {
-    const { name, email, password } = request.body
+function myMiddleware(request, response, next) {
+    if (!request.body.isAdmin) {
+        return response.json( { message: "User unauthorized "})
+    }
 
-    response.json({ name, email, password })
-})
+    next()
+}
+
+usersRoutes.post("/", myMiddleware, userController.create)
 
 module.exports = usersRoutes
