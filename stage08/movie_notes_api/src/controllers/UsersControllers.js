@@ -1,3 +1,5 @@
+const AppError = require("../utils/AppError")
+
 class UsersControllers {
 
     /**
@@ -9,9 +11,12 @@ class UsersControllers {
      */
 
     create(request, response) {
-        const { name, email, password } = request.body
+        const { name, email, password, isAdmin } = request.body
 
-        response.status(201).json({ name, email, password })
+        if (!name) {
+            throw new AppError("Nome obrigatório")
+        }
+        response.status(201).json({ name, email, password, isAdmin })
     }
 }
 
