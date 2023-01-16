@@ -7,6 +7,7 @@ const movieNotesControllers = new MovieNotesController()
 const movieNotesRoutes = Router()
 
 movieNotesRoutes.get("/", movieNotesControllers.show)
+movieNotesRoutes.get("/:user_id", movieNotesControllers.index)
 movieNotesRoutes.delete("/", movieNotesControllers.delete)
 movieNotesRoutes.post("/", movieNotesControllers.create)
 

@@ -47,6 +47,16 @@ class MovieNotesController {
         })
     }
 
+    async index(request, response) {
+        const { user_id } = request.query
+
+        console.log(user_id);
+        const movieNotes = await knex("movie_notes")
+            .where({ user_id })
+            .orderBy("title")
+        response.json( movieNotes )
+    }
+
     async delete(request, response) {
         const { id } = request.body
 
