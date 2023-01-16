@@ -11,6 +11,10 @@ class MovieNotesController {
             throw new AppError("Usuário inválido")
         }
 
+        if (!rating || rating <=0 || rating >= 6) {
+            throw new AppError("A avaliação (rating) precisa ser entre 1 e 5.")
+        }
+
         const note_id = await knex("movie_notes").insert({
             title,
             description,
