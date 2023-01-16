@@ -10,7 +10,7 @@ class UsersControllers {
         const emailExist = await knex("users").where({ email }).first()
 
         if (userExist || emailExist) {
-            throw new AppError("Esse usuário já está cadastrado.")
+            throw new AppError("Esse nome ou email já cadastrados.")
         }
 
         const hashedPassword = await hash(password, 8)
