@@ -6,6 +6,7 @@ const movieNotesControllers = new MovieNotesController()
 
 const movieNotesRoutes = Router()
 
+movieNotesRoutes.get("/", movieNotesControllers.show)
 movieNotesRoutes.delete("/", movieNotesControllers.delete)
 movieNotesRoutes.post("/", movieNotesControllers.create)
 
