@@ -3,6 +3,17 @@ const AppError = require("../utils/AppError")
 const knex = require("../database/knex")
 
 class UsersControllers {
+    async index(request, response) {
+
+        const users = await knex("users")
+
+        if (!users) {
+            throw new AppError("Nenhum usuário cadastrado")
+        }
+
+        response.json(users)
+    }
+
     async create(request, response) {
         const { name, email, password } = request.body
 
@@ -56,10 +67,11 @@ class UsersControllers {
         await knex("users").where({ id }).update({
             name,
             email,
-            password: user.password
+            password: user.password,
+            updated_at: knex.fn.now()
         })
 
-        return response.json()
+        return response.status(200).json()
     }
 }
 
