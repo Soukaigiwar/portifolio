@@ -6,7 +6,7 @@ class MovieTagsController {
         
         const { user_id } = request.body
 
-        const tags = await knex("movie_tags").where({ user_id }).first()
+        const tags = await knex("movie_tags").where({ user_id })
 
         if (!tags) {
             throw new AppError("Nenhuma tag cadastrada para esse usuário")
