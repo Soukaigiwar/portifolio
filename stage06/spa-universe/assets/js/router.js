@@ -21,7 +21,7 @@ export class Router {
         let routeLastName = route.split('/').pop()
         routeLastName = routeLastName.split('.')[0]
 
-        fetch(route)
+        .fetch(route)
         .then(data => data.text())
         .then(html => {
             document.querySelector('#app').innerHTML = html
