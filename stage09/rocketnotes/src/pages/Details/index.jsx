@@ -1,9 +1,13 @@
 import { Container } from "./styles.js"
+import { Button } from "../../components/Button"
+import { Header } from "../../components/Header/"
 
 export function Details() {
     return (
         <Container>
-            <h3>Sergio HP Mello</h3>
+            <Header />
+            
+            
         </Container>
     )
   }
