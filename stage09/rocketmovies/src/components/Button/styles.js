@@ -8,6 +8,11 @@ export const Container = styled.button`
     font-size: 1.6rem;
     line-height: 2.1rem;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .8rem;
+
     background-color: ${({ theme }) => theme.COLORS.PINK};
     color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 `

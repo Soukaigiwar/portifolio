@@ -1,17 +1,16 @@
 import { FiPlus } from "react-icons/fi"
-import { Container, NewMovie } from './styles'
+import { Button } from "../../components/Button"
+import { Container } from './styles'
 
 export function Home() {
     return (
         <Container>
             <h2>Meus Filmes</h2>
-            <NewMovie>
-                <span>
-                    <FiPlus />
-                    Adicionar filmes
-                </span>
-            </NewMovie>
-
+            <Button
+                title="Adicionar filme"
+                icon={FiPlus}
+                style={{ width: "207px", }}
+            />            
             
         </Container>
     )
