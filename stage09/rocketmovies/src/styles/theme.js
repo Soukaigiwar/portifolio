@@ -5,10 +5,10 @@ export default {
         BACKGROUND_700: "#312E38",
         BACKGROUND_600: "#3E3B47",
         
-        GRAY_400: "#948F99",
-        GRAY_300: "#999591",
-        GRAY_200: "#CAC4CF",
-        GRAY_100: "#E5E5E5",
+        GRAY_900: "#948F99",
+        GRAY_800: "#999591",
+        GRAY_700: "#CAC4CF",
+        GRAY_600: "#E5E5E5",
         
         WHITE_900: "#F4EDE8",
         WHITE_800: "#FFFFFF",
