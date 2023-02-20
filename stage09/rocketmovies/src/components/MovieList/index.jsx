@@ -4,9 +4,9 @@ import { Container } from "./styles"
 export function MovieList() {
     return (
         <Container>
-            <MovieItem />
-            <MovieItem />
-            <MovieItem />
+                <MovieItem />
+                <MovieItem />
+                <MovieItem />
         </Container>
     )
 }

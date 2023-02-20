@@ -3,18 +3,23 @@ import styled from "styled-components"
 export const Container = styled.div`
     display: flex;
 
-    height: 20rem;
     width: 100%;
     padding: 3.2rem;
     flex-direction: column;
     border-radius: 1.6rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_PINK};
 
+    > span {
+        margin-top: .8rem;
+        color: ${({ theme }) => theme.COLORS.PINK};
+    }
+
     > p {
         font-family: 'Roboto', serif;
         line-height: 1.9rem;
         font-size: 1.6rem;
         margin-top: 1.5rem;
+        
         color: ${({ theme }) => theme.COLORS.GRAY_700};
 
         background-color: transparent;
@@ -25,5 +30,11 @@ export const Container = styled.div`
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+    }
+
+    > footer {
+        width: 100%;
+        display: flex;
+        margin-top: 1.5rem;
     }
 `
