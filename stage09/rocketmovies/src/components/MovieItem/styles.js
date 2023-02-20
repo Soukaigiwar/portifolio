@@ -9,10 +9,7 @@ export const Container = styled.div`
     border-radius: 1.6rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_PINK};
 
-    > span {
-        margin-top: .8rem;
-        color: ${({ theme }) => theme.COLORS.PINK};
-    }
+
 
     > p {
         font-family: 'Roboto', serif;
