@@ -6,7 +6,7 @@ export const Container = styled.div`
     align-items: flex-start;
     
     gap: 2.4rem;
-    height: 70rem;
+    max-height: 60rem;
     overflow-y: auto;
     
     &::-webkit-scrollbar {

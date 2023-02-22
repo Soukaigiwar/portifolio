@@ -7,11 +7,11 @@ export const Container = styled.div`
         "header"
         "content";
     
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-        
-        margin: 0 12rem;
-        
-        > div {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    
+    margin: 0 12rem;
+    
+    > div {
         display: flex;
         justify-content: space-between;
         align-items: center;

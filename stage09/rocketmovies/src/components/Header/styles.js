@@ -20,6 +20,7 @@ export const Container = styled.header`
     > h1 {
         font-size: 2.4rem;
         color: ${({ theme }) => theme.COLORS.PINK};
+        margin-right: 6.4rem;
     }
 `
 
@@ -28,8 +29,8 @@ export const Profile = styled.div`
     align-items: center;
 
     > img {
-        width: 56px;
-        height: 56px;
+        width: 5.6rem;
+        height: 5.6rem;
         margin-left: .9rem;
         border-radius: 50%;
         border: solid 1px; 
@@ -40,11 +41,11 @@ export const Profile = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        margin-left: 16px;
-        line-height: 24px;
+        margin-left: 6.4rem;
+        line-height: 2.4rem;
 
         span {
-            font-size: 14px;
+            font-size: 1.4rem;
             line-height: 1.8rem;
             font-weight: 400;
             color: ${({ theme }) => theme.COLORS.GRAY_700};
