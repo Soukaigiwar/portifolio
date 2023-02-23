@@ -1,9 +1,12 @@
 import { Container } from "./styles"
 
-export function Tag({ title, ...rest }) {
+export function Tag({ icon: Icon, title, ...rest }) {
     return (
         <Container {...rest}>
-            {title}
+            <div>
+                {title}
+                {Icon && <Icon size={20} />}
+            </div>
         </Container>
     )
 }

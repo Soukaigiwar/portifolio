@@ -6,7 +6,9 @@ export const Container = styled.header`
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
     display: flex;
-    width: 100%;
+    margin: 0 auto;
+    min-width: 113.7rem; 
+    
     height: 11.6rem;
 
     border-bottom-width: 1px;
