@@ -1,4 +1,3 @@
-import { RxStarFilled, RxStar } from "react-icons/rx"
 import { Tag } from "../Tag"
 import { Stars } from "../Stars"
 import { Container } from "./styles"
