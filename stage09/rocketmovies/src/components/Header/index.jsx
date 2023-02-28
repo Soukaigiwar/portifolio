@@ -1,14 +1,11 @@
 import { Container, Profile } from "./styles"
 import { Input } from "../Input"
 
-export function Header() {
+export function Header({ children }) {
     return (
         <Container>
             <h1>RocketMovies</h1>
-            <Input
-                type="text"
-                placeholder="Pesquisar pelo título"
-            />
+            {children}
             <Profile>
                 <div>
                     <strong>Sergio Mello</strong>

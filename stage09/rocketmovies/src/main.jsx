@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import { CreateMovie } from './pages/CreateMovie'
 import { Profile } from './pages/Profile'
+import { Home } from './pages/Home'
 import GlobalStyles from './styles/global'
 import theme from './styles/theme'
 

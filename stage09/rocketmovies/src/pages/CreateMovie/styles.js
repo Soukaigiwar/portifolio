@@ -14,11 +14,30 @@ export const Container = styled.div`
     > main {
         grid-area: content;
         margin: 4rem auto;
+        overflow-y: auto;
+        height: calc(100vh - 185px);
+
+        &::-webkit-scrollbar {
+        width: 2.4rem;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        height: 4rem;
+        border: .8rem solid;
+        border-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+        border-radius: 9999px;
+        background-color: ${({ theme }) => theme.COLORS.PINK};
+    }
     }    
 `
 
 export const Form = styled.form`
-    width: 113.7rem;    
+    width: 113.7rem;
     
     > h2 {
         margin-top: 2.4rem;
@@ -66,6 +85,7 @@ export const Form = styled.form`
             justify-content: center;
             align-items: center;
             gap: .8rem;
+            cursor: pointer;
 
             background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
             color: ${({ theme }) => theme.COLORS.PINK};
@@ -73,6 +93,7 @@ export const Form = styled.form`
 
         > button:nth-child(2) {
             font-weight: 500;
+            cursor: pointer;
         }
     }
 `

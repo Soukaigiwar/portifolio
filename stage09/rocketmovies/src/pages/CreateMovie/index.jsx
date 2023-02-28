@@ -10,7 +10,9 @@ import { Header } from "../../components/Header"
 export function CreateMovie() {
     return (
         <Container>
-            <Header />
+            <Header>
+                <Input placeholder="Pesquisar pelo título"/>
+            </Header>
 
             <main>
                 <Form>
