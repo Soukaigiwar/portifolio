@@ -38,6 +38,33 @@ export function Home() {
                             ]
                         }
                     } />
+                    <Note data={
+                        {
+                            title: "React",
+                            tags: [
+                                { id: "1", name: "React" },
+                                { id: "2", name: "NodeJs" },
+                            ]
+                        }
+                    } />
+                    <Note data={
+                        {
+                            title: "React",
+                            tags: [
+                                { id: "1", name: "React" },
+                                { id: "2", name: "NodeJs" },
+                            ]
+                        }
+                    } />
+                    <Note data={
+                        {
+                            title: "React",
+                            tags: [
+                                { id: "1", name: "React" },
+                                { id: "2", name: "NodeJs" },
+                            ]
+                        }
+                    } />
                 </Section>
             </Content>
 
