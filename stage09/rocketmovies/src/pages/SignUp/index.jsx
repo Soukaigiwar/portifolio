@@ -1,4 +1,5 @@
 import { FiMail, FiLock, FiUser, FiArrowLeft } from "react-icons/fi"
+import { Link } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
 import { Container, Form, Background } from './styles'
@@ -33,7 +34,7 @@ export function SignUp() {
                         width: "34rem",
                     }} />
                 </div>
-                <a href="#"><FiArrowLeft />Voltar para o Login</a>
+                <Link to="/"><FiArrowLeft />Voltar para o Login</Link>
             </Form>
             <Background />
         </Container>

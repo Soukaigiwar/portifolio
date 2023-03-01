@@ -1,19 +1,23 @@
 import { Container, Profile } from "./styles"
-import { Input } from "../Input"
+import { Link } from "react-router-dom"
 
 export function Header({ children }) {
     return (
         <Container>
-            <h1>RocketMovies</h1>
+            <h1><Link to="/">RocketMovies</Link></h1>
             {children}
             <Profile>
                 <div>
-                    <strong>Sergio Mello</strong>
+                    <strong><Link to="/profile">Sergio Mello</Link></strong>
                     <span>
-                        sair
+                        <Link to="/">
+                            sair
+                        </Link>
                     </span>
                 </div>
-                <img src="https://github.com/soukaigiwar.png" alt="Imagem de perfil" />
+                <Link to="profile">
+                    <img src="https://github.com/soukaigiwar.png" alt="Imagem de perfil" />
+                </Link>
             </Profile>
         </Container>
     )

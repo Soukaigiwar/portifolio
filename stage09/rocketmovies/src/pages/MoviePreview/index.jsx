@@ -1,4 +1,4 @@
-import { FiClock } from "react-icons/fi"
+import { FiClock, FiSearch } from "react-icons/fi"
 import { Header } from "../../components/Header"
 import { Back } from "../../components/Back"
 import { Input } from "../../components/Input"
@@ -10,7 +10,7 @@ export function MoviePreview() {
     return (
         <Container>
             <Header>
-                <Input placeholder="Pesquisar pelo título" />
+                <Input icon={FiSearch} placeholder="Pesquisar pelo título" />
             </Header>
             <main>
                 <Back />

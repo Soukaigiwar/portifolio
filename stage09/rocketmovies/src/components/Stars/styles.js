@@ -5,7 +5,8 @@ export const Container = styled.div`
     margin-top: .8rem;
     color: ${({ theme }) => theme.COLORS.PINK};
     > * {
-        margin-left: .6rem;
+        margin-right: .6rem;
+        margin-top: .8rem;
     }
     }
 `

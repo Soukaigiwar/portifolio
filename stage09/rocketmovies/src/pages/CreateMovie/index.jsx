@@ -1,4 +1,5 @@
 import { Container, Form } from "./styles"
+import { FiSearch } from "react-icons/fi"
 import { Back } from "../../components/Back"
 import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
@@ -11,7 +12,7 @@ export function CreateMovie() {
     return (
         <Container>
             <Header>
-                <Input placeholder="Pesquisar pelo título"/>
+                <Input icon={FiSearch} placeholder="Pesquisar pelo título"/>
             </Header>
 
             <main>

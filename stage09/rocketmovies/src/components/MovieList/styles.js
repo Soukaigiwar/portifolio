@@ -6,6 +6,8 @@ export const Container = styled.div`
     align-items: flex-start;
     
     gap: 2.4rem;
+    width: 113.7rem;
+    margin: 4rem auto;
     height: calc(100vh - 330px);
     overflow-y: auto;
     

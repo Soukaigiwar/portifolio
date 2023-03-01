@@ -9,7 +9,9 @@ export const Container = styled.div`
     border-radius: 1.6rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_PINK};
 
-
+    > h2 a {
+        color: ${({ theme }) => theme.COLORS.WHITE_800};
+    }
 
     > p {
         font-family: 'Roboto', serif;
