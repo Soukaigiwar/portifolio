@@ -4,8 +4,9 @@ const AppError = require("../utils/AppError")
 
 class MovieNotesController {
     async create(request, response) {
-        const { title, description, user_id, rating, tags } = request.body
-        const validateUserId = await knex("users").where({ id: user_id }).first()
+        const { title, description, rating, tags } = request.body
+        const user_id = request.user.id
+        const validateUserId = await knex("users").where('id', user_id).first()
 
         if (!validateUserId) {
             throw new AppError("Usuário inválido")
@@ -49,11 +50,10 @@ class MovieNotesController {
     }
 
     async index(request, response) {
-        const { user_id } = request.query
+        const user_id = request.user.id
 
-        console.log(user_id);
         const movieNotes = await knex("movie_notes")
-            .where({ user_id })
+            .where('id', user_id )
             .orderBy("title")
         return response.json( movieNotes )
     }
