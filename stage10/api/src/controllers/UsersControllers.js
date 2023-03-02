@@ -11,7 +11,7 @@ class UsersControllers {
             throw new AppError("Nenhum usuário cadastrado")
         }
 
-        response.json(users)
+        return response.json(users)
     }
 
     async create(request, response) {

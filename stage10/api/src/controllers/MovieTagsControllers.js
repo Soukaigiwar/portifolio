@@ -13,7 +13,7 @@ class MovieTagsController {
         }
 
 
-        response.json(tags)
+        return response.json(tags)
     }
 }
 

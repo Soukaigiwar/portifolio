@@ -29,13 +29,10 @@ class MovieNotesController {
                 name
             }
         })
-        console.log("aqui");
-
-        console.log(movieTagsInsert);
 
         await knex("movie_tags").insert(movieTagsInsert)
 
-        response.status(201).json()
+        return response.status(201).json()
     }
 
     async show(request, response) {
@@ -58,7 +55,7 @@ class MovieNotesController {
         const movieNotes = await knex("movie_notes")
             .where({ user_id })
             .orderBy("title")
-        response.json( movieNotes )
+        return response.json( movieNotes )
     }
 
     async delete(request, response) {
@@ -66,7 +63,7 @@ class MovieNotesController {
 
         await knex("movie_notes").where({ id }).delete()
 
-        response.json()
+        return response.json()
     }
 }
 
