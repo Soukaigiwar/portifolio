@@ -4,7 +4,7 @@ const AppError = require("../utils/AppError")
 class MovieTagsController {
     async index(request, response) {
         
-        const { user_id } = request.body
+        const user_id = request.user.id
 
         const tags = await knex("movie_tags").where({ user_id })
 

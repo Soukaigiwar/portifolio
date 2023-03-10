@@ -61,9 +61,27 @@ class MovieNotesController {
     async delete(request, response) {
         const { id } = request.body
 
-        await knex("movie_notes").where({ id }).delete()
+        const movieNote = await knex("movie_notes").where({ id }).first()
 
-        return response.json()
+        if (!movieNote) {
+            throw new AppError("error: Não encontrado", 404)
+        } else {
+            await knex("movie_notes").where({ id }).delete()
+            return response.status(204).json({ id })
+        }
+
+        
+
+        // throw new AppError("Não encontrado", 401)
+        
+        // try {
+        //     await knex("movie_notes").where({ id }).delete()
+        //     return response.json()
+        // } catch {
+        //     console.log("não encontrado");
+        //     throw new AppError("Não encontrado", 401)
+        // }
+
     }
 }
 
