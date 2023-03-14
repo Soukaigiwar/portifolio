@@ -5,24 +5,48 @@ import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 import { Back } from "../../components/Back"
 import { Container, Form, Avatar } from "./styles"
+import { api } from "../../services/api"
+import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg"
 
 export function Profile() {
     const { user, updateProfile } = useAuth()
-
+    
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
     const [passwordOld, setPasswordOld] = useState("")
     const [passwordNew, setPasswordNew] = useState("")
-
+    
+    const [avatar, setAvatar] = useState(user.avatar)
+    const [avatarFile, setAvatarFile] = useState(null)
+    
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+    console.log(`${api.defaults.baseURL}/files/${user.avatar}`);
+    console.log(avatarUrl);
+    
     async function handleUpdate() {
         const user = {
             name,
             email,
+            avatar,
             new_password: passwordNew,
             old_password: passwordOld,
         }
 
-        await updateProfile({ user })
+        console.log("aqui", user.name);
+        console.log("aqui", user.email);
+        console.log("aqui", avatarUrl);
+        
+        await updateProfile({ user, avatarFile })
+    }
+    
+    function handleChangeAvatar(event) {
+        const file = event.target.files[0]
+
+        setAvatarFile(file)
+
+        const imagePreview = URL.createObjectURL(file)
+        console.log("file: ", file);
+        setAvatar(imagePreview)
     }
 
     return (
@@ -34,7 +58,7 @@ export function Profile() {
             <Form>
                 <Avatar>
                     <img
-                        src="https://github.com/soukaigiwar.png"
+                        src={avatarUrl}
                         alt="Foto do Usuário"
                     />
                     <label htmlFor="avatar">
@@ -42,6 +66,7 @@ export function Profile() {
                         <Input
                             id="avatar"
                             type="file"
+                            onChange={handleChangeAvatar}
                         />
                     </label>
                 </Avatar>
