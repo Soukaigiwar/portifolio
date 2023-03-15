@@ -16,12 +16,10 @@ export function Profile() {
     const [passwordOld, setPasswordOld] = useState("")
     const [passwordNew, setPasswordNew] = useState("")
     
-    const [avatar, setAvatar] = useState(user.avatar)
-    const [avatarFile, setAvatarFile] = useState(null)
-    
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
-    console.log(`${api.defaults.baseURL}/files/${user.avatar}`);
-    console.log(avatarUrl);
+    
+    const [avatar, setAvatar] = useState(avatarUrl)
+    const [avatarFile, setAvatarFile] = useState(null)
     
     async function handleUpdate() {
         const user = {
@@ -32,10 +30,6 @@ export function Profile() {
             old_password: passwordOld,
         }
 
-        console.log("aqui", user.name);
-        console.log("aqui", user.email);
-        console.log("aqui", avatarUrl);
-        
         await updateProfile({ user, avatarFile })
     }
     
@@ -58,7 +52,7 @@ export function Profile() {
             <Form>
                 <Avatar>
                     <img
-                        src={avatarUrl}
+                        src={avatar}
                         alt="Foto do Usuário"
                     />
                     <label htmlFor="avatar">
