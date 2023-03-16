@@ -39,7 +39,6 @@ export function Profile() {
         setAvatarFile(file)
 
         const imagePreview = URL.createObjectURL(file)
-        console.log("file: ", file);
         setAvatar(imagePreview)
     }
 
@@ -65,6 +64,7 @@ export function Profile() {
                     </label>
                 </Avatar>
                 <Input
+                    autocomplete="username"
                     placeholder="Nome"
                     type="text"
                     icon={FiUser}
@@ -73,18 +73,21 @@ export function Profile() {
                 />
                 <Input
                     placeholder="E-mail"
+                    autocomplete="e-mail"
                     type="text"
                     icon={FiMail}
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <Input
+                    autocomplete="current-password"
                     placeholder="Senha atual"
                     type="password"
                     icon={FiLock}
                     onChange={e => setPasswordOld(e.target.value)}
                 />
                 <Input
+                    autocomplete="new-password"
                     placeholder="Nova senha"
                     type="password"
                     icon={FiLock}

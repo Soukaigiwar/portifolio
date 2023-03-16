@@ -71,7 +71,7 @@ function AuthProvider({ children }) {
                 token,
                 user: JSON.parse(user)
             })
-            console.log("user", user.avatar);
+        
         }
     }, [])
 

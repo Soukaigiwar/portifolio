@@ -12,12 +12,12 @@ export const Container = styled.div`
 
         background: ${({ theme }) => theme.COLORS.DARK_PINK };
 
-        a {
+        /* a {
             display: flex;
             align-items: center;
             gap: .8rem;
             color: ${({ theme }) => theme.COLORS.PINK };
-        }
+        } */
     }
 `
 export const Form = styled.form`
