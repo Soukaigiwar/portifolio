@@ -40,10 +40,9 @@ function AuthProvider({ children }) {
                 fileUploadForm.append("avatar", avatarFile)
                 
                 const response = await api.patch("/users/avatar", fileUploadForm)
-                console.log("avatar dentro updateProfile: ", response.data.avatar);
+                
                 user.avatar = response.data.avatar
                 localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
-                console.log("avatar localstorage: ", user.avatar);
             }
 
 

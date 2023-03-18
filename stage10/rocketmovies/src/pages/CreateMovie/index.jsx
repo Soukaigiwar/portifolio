@@ -1,6 +1,6 @@
 import { Container, Form } from "./styles"
 import { FiSearch } from "react-icons/fi"
-import { Back } from "../../components/Back"
+import { BackButton } from "../../components/BackButton"
 import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
 import { TagItem } from "../../components/TagItem"
@@ -17,7 +17,7 @@ export function CreateMovie() {
 
             <main>
                 <Form>
-                    <Back />
+                    <BackButton />
                     
                     <h2>Novo Filme</h2>
                     <div className="double_input">

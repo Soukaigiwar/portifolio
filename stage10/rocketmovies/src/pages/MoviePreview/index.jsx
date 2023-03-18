@@ -1,6 +1,6 @@
 import { FiClock, FiSearch } from "react-icons/fi"
 import { Header } from "../../components/Header"
-import { Back } from "../../components/Back"
+import { BackButton } from "../../components/BackButton"
 import { Input } from "../../components/Input"
 import { Stars } from "../../components/Stars"
 import { Tag } from "../../components/Tag"
@@ -13,7 +13,7 @@ export function MoviePreview() {
                 <Input icon={FiSearch} placeholder="Pesquisar pelo título" />
             </Header>
             <main>
-                <Back />
+                <BackButton />
 
                 <div className="title">
                     <h2>Interstellar</h2>

@@ -1,38 +1,46 @@
 import { useState } from "react"
 import { useAuth } from "../../hooks/auth"
-import { FiCamera, FiUser, FiMail, FiLock } from "react-icons/fi"
+import { useNavigate } from 'react-router-dom';
+import { FiCamera, FiUser, FiMail, FiLock, FiArrowLeft } from "react-icons/fi"
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
-import { Back } from "../../components/Back"
+import { BackButton } from "../../components/BackButton"
 import { Container, Form, Avatar } from "./styles"
 import { api } from "../../services/api"
 import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg"
 
 export function Profile() {
     const { user, updateProfile } = useAuth()
-    
+
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
     const [passwordOld, setPasswordOld] = useState("")
     const [passwordNew, setPasswordNew] = useState("")
-    
+
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
-    
+
     const [avatar, setAvatar] = useState(avatarUrl)
     const [avatarFile, setAvatarFile] = useState(null)
-    
+
+    const navigate = useNavigate();
+
+	function historyBack() {
+		navigate(-1);
+	}
+
     async function handleUpdate() {
-        const user = {
+        const updated = {
             name,
             email,
-            avatar,
             new_password: passwordNew,
             old_password: passwordOld,
         }
 
-        await updateProfile({ user, avatarFile })
+        const userUpdated = Object.assign(user, updated)
+
+        await updateProfile({ user: userUpdated, avatarFile })
     }
-    
+
     function handleChangeAvatar(event) {
         const file = event.target.files[0]
 
@@ -45,7 +53,10 @@ export function Profile() {
     return (
         <Container>
             <header>
-                <Back />
+                <BackButton onClick={historyBack}>
+                    <FiArrowLeft />
+                    Voltar
+                </BackButton>
             </header>
 
             <Form>
@@ -64,7 +75,7 @@ export function Profile() {
                     </label>
                 </Avatar>
                 <Input
-                    autocomplete="username"
+                    autoComplete="username"
                     placeholder="Nome"
                     type="text"
                     icon={FiUser}
@@ -72,28 +83,28 @@ export function Profile() {
                     onChange={e => setName(e.target.value)}
                 />
                 <Input
+                    autoComplete="e-mail"
                     placeholder="E-mail"
-                    autocomplete="e-mail"
                     type="text"
                     icon={FiMail}
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <Input
-                    autocomplete="current-password"
+                    autoComplete="current-password"
                     placeholder="Senha atual"
                     type="password"
                     icon={FiLock}
                     onChange={e => setPasswordOld(e.target.value)}
                 />
                 <Input
-                    autocomplete="new-password"
+                    autoComplete="new-password"
                     placeholder="Nova senha"
                     type="password"
                     icon={FiLock}
                     onChange={e => setPasswordNew(e.target.value)}
                 />
-                <Button title="Salvar" onClick={ handleUpdate } />
+                <Button title="Salvar" onClick={handleUpdate} />
             </Form>
         </Container>
     )

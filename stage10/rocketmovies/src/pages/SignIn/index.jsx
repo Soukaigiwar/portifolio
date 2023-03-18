@@ -26,12 +26,14 @@ export function SignIn() {
                     <h2>Faça seu login</h2>
 
                     <Input
+                        autoComplete="e-mail"
                         placeholder="E-mail"
                         type="text"
                         icon={FiMail}
                         onChange={e => setEmail(e.target.value)}
                     />
                     <Input
+                        autoComplete="password"
                         placeholder="Senha"
                         type="password"
                         icon={FiLock}
