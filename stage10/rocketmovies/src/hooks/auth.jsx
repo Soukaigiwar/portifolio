@@ -33,8 +33,9 @@ function AuthProvider({ children }) {
     }
 
     async function updateProfile({ user, avatarFile }) {
+        
         try {
-            console.log("user recebido no update: ", user);
+
             if (avatarFile) {
                 const fileUploadForm = new FormData()
                 fileUploadForm.append("avatar", avatarFile)
@@ -42,14 +43,14 @@ function AuthProvider({ children }) {
                 const response = await api.patch("/users/avatar", fileUploadForm)
                 
                 user.avatar = response.data.avatar
-                localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
             }
-
-
-            console.log("user", user);
             
+            await api.put("/users", user)
+            localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
+
+            setData({ user, token: data.token})
             alert("Perfil atualizado.")
-            return
+
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.message)
