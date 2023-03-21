@@ -1,11 +1,18 @@
-import { Container, Profile } from "./styles"
-import { Link } from "react-router-dom"
+import { Container, Profile, LogOut } from "./styles"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
+
 import { api } from "../../services/api"
 import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg"
 
 export function Header({ children }) {
     const { signOut, user } = useAuth()
+    const navigate = useNavigate()
+
+    function handleSignOut() {
+        navigate("/")
+        signOut()
+    }
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
@@ -15,12 +22,10 @@ export function Header({ children }) {
             {children}
             <Profile>
                 <div>
-                    <strong><Link to="/profile">{user.name}</Link></strong>
-                    <span>
-                        <Link onClick={signOut}>
+                    <Link to="/profile">{user.name}</Link>
+                        <LogOut onClick={handleSignOut}>
                             sair
-                        </Link>
-                    </span>
+                        </LogOut>
                 </div>
                 <Link to="profile">
                     <img src={avatarUrl} />

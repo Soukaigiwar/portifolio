@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { api } from '../services/api'
 
 export const AuthContext = createContext({})
@@ -28,7 +29,7 @@ function AuthProvider({ children }) {
     function signOut() {
         localStorage.removeItem("@rocketmovies:token")
         localStorage.removeItem("@rocketmovies:user")
-
+        
         setData({})
     }
 
@@ -71,7 +72,6 @@ function AuthProvider({ children }) {
                 token,
                 user: JSON.parse(user)
             })
-        
         }
     }, [])
 

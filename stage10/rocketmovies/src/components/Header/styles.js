@@ -48,17 +48,25 @@ export const Profile = styled.div`
 
         a {
             font-size: 1.4rem;
-            line-height: 1.8rem;
-            font-weight: 400;
-            color: ${({ theme }) => theme.COLORS.GRAY_700};
-        }
-
-        strong a {
-            font-size: 1.4rem;
             font-weight: 700;
             line-height: 1.8rem;
             color: ${({ theme }) => theme.COLORS.WHITE_900};
             white-space: nowrap;
         }
     }
+`
+
+export const LogOut = styled.button`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 6.4rem;
+    line-height: 2.4rem;
+    background: none;
+    border: none;
+
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 400;
+    color: ${({ theme }) => theme.COLORS.GRAY_700};
 `
