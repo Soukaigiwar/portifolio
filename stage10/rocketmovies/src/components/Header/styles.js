@@ -64,6 +64,7 @@ export const LogOut = styled.button`
     line-height: 2.4rem;
     background: none;
     border: none;
+    cursor: pointer;
 
     font-size: 1.4rem;
     line-height: 1.8rem;

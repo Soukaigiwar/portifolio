@@ -13,8 +13,8 @@ import { Header } from "../../components/Header"
 
 export function CreateMovie() {
     const [title, setTitle] = useState("")
-    const [grade, setGrade] = useState("")
-    const [comment, setComment] = useState("")
+    const [rating, setRating] = useState("")
+    const [description, setDescription] = useState("")
 
     const [tags, setTags] = useState([])
     const [newTag, setNewTag] = useState("")
@@ -22,10 +22,14 @@ export function CreateMovie() {
     const navigate = useNavigate()
 
     async function handleNewMovie() {
+        if (!title) return alert("Preencha o Título.")
+        if (!rating) return alert("Dê uma nota de 1 a 5")
+        if (newTag) return alert("Você precisa confirmar o campo da tag ou deixar em branco.")
+
         await api.post("/movieNotes", {
                 title,
-                description: comment,
-                rating: grade,
+                description,
+                rating,
                 tags
         })
 
@@ -59,13 +63,13 @@ export function CreateMovie() {
                             onChange={e => setTitle(e.target.value)}
                         />
                         <Input
-                            placeholder="Sua nota (de 0 a 5)"
-                            onChange={e => setGrade(e.target.value)}
+                            placeholder="Sua nota (de 1 a 5)"
+                            onChange={e => setRating(e.target.value)}
                         />
                     </div>
                     <Textarea
                         placeholder="Observações"
-                        onChange={e => setComment(e.target.value)}
+                        onChange={e => setDescription(e.target.value)}
                     />
                     <h3>Marcadores</h3>
                     <div className="tag_item">
