@@ -23,7 +23,7 @@ export function Movie({ data, ...rest }) {
     return (
         <Container {...rest}>
             {
-                console.log("teste")
+                console.log(data)
                 // data.map(movie => {
                 //     <MovieItem key={String(movie.id)} title={movie.title} rating={movie.rating} />
                 // })

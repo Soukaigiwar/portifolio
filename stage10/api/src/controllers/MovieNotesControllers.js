@@ -11,19 +11,23 @@ class MovieNotesController {
         if (!validateUserId) {
             throw new AppError("Usuário inválido")
         }
-
-        if (!rating || rating <=0 || rating >= 6) {
+        
+        if (!rating || rating < 1 || rating > 5) {
             throw new AppError("A avaliação (rating) precisa ser entre 1 e 5.")
         }
+        
+        if (!tags) {
+            throw new AppError("Precisa ter alguma tag.")
+        }
 
-        const note_id = await knex("movie_notes").insert({
+        const [note_id] = await knex("movie_notes").insert({
             title,
             description,
             user_id,
             rating
         })
 
-        const movieTagsInsert = tags.map(name => {
+        tags && tags.map(name => {
             return {
                 note_id,
                 user_id,

@@ -6,19 +6,23 @@ import { Movie } from "../../components/Movie"
 import { Container } from './styles'
 import { useEffect, useState } from "react"
 import { api } from "../../services/api"
+import { useAuth } from "../../hooks/auth"
 
 export function Home() {
     const [movies, setMovies] = useState([])
+    const { user } = new useAuth()
+    
 
     useEffect(() => {
         async function fetchMovies() {
-            const response = await api.get("/movieNotes")
+            const response = await api.get("/movieNotes", { id: 3 } )
             setMovies(response.data)
         }
 
+        
         fetchMovies()
     }, [])
-
+    
     return (
         <Container>
             <Header>
@@ -42,6 +46,7 @@ export function Home() {
                     />
                 })
             }
+            
         </Container>
     )
 }
