@@ -5,10 +5,12 @@ export function Header() {
     return (
         <Container>
             <Profile to="/profile">
-                <img src="https://github.com/soukaigiwar.png" alt="Imagem de perfil" />
+                <img
+                    src="https://github.com/soukaigiwar.png"
+                    alt="Imagem de perfil" />
                 <div>
                     <span>
-                        Bem vindo,
+                        Bem-vindo,
                     </span>
                     <strong>Sergio Mello</strong>
                 </div>
