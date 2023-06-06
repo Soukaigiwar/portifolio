@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+
+    margin: 0 auto;
+    width: 626px;
+}
+
+main img {
+    margin: 64px auto 0;
+}
+
+main h2 {
+    font-family: 'Dosis', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+main h2 span {
+    color: #EE24FF;
+    font-weight: 700;
+}
+
+main p {
+    width: 540px;
+    margin: 16px auto 32px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+
+    color: #828282;
+}
+
+main p span {
+    font-weight: 700;
+    color: #3F3D56;
+}
+
+#flutuar{
+    font-weight: 700;
+    color: #828282;
+}
+
+footer {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    margin: 64px auto;
+}
+
+footer div {
+    display: flex;
+}
+
+footer #line {
+    width: 391px;
+	height: 0px;
+	margin: 0 auto 16px;
+	border: 1px solid #ECEFF2;
+}
+
+footer a {
+    display: inline-flex;
+    
+    color: #3F3D56;
+    text-decoration: none;
+}
+
+footer a + a {
+    margin-left: 28px;
+}
+
+footer #wave {
+    width: 100%;
+    margin-top: 40px;
+    bottom: 0;
+    position: fixed;
+}
