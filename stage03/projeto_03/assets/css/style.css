@@ -22,9 +22,7 @@
 }
 
 body {
-    margin: 0;
     padding: 0 2.3rem 10rem;
-    box-sizing: border-box;
 
     background-color: var(--bg-primary);
     color: var(--fc-primary);
