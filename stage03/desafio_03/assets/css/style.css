@@ -1,0 +1,177 @@
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ff-title: 'Cherry Bomb One', cursive;
+    --ff-contact: 'Nunito Sans', sans-serif;
+    --fs-title: 10rem;
+    --fc-title: rgb(184, 79, 19);
+    --fc-title-outline: rgb(255, 255, 255);
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0d4e14;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+main header {
+
+}
+
+main header h1 {
+    margin: 5px auto 25px;
+    height: 100px;
+
+    font-family: var(--ff-title);
+    font-size: var(--fs-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.39));
+    color: var(--fc-title);
+
+    -webkit-text-stroke: 1px var(--fc-title-outline);
+    
+    text-align: center;
+}
+
+main .gameArea {   
+    width: 1024px;
+    height: 768px;
+    margin: 50px auto;
+
+    background-image: url(../img/fundo.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    border: 1px solid;
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.39));
+}
+
+main .gameArea .cells {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    margin: 120px;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 600px;
+}
+
+main .gameCell .mole {
+    background-image: url(../img/toupeira6.svg);
+    width: 120px;
+    height: 150px;
+    background-size: 120px 130px;
+    margin: 0 auto;
+}
+
+main div:nth-child(1) .mole {
+    animation: mole 2s linear ;
+    animation-delay: 5s;
+}
+main div:nth-child(2) .mole {
+    animation: mole 2s linear;
+    animation-delay: 8s;
+}
+main div:nth-child(3) .mole {
+    animation: mole 1.5s linear;
+    animation-delay: 3s;
+}
+main div:nth-child(4) .mole {
+    animation: mole 2.5s linear;
+    animation-delay: 1.5s;
+}
+main div:nth-child(5) .mole {
+    animation: mole 1.5s linear;
+    animation-delay: 2s;
+}
+main div:nth-child(6) .mole {
+    animation: mole 2s linear ;
+    animation-delay: 4s;
+}
+main div:nth-child(7) .mole {
+    animation: mole 1.5s linear ;
+    animation-delay: 7s;
+}
+main div:nth-child(8) .mole {
+    animation: mole 2.5s linear ;
+    animation-delay: 10s;
+}
+main div:nth-child(9) .mole {
+    animation: mole 2s linear ;
+    animation-delay: 9s;
+}
+main div:nth-child(10) .mole {
+    animation: mole 2s linear ;
+    animation-delay: 2s;
+}
+main div:nth-child(11) .mole {
+    animation: mole 1s linear ;
+}
+main div:nth-child(12) .mole {
+    animation: mole 3s linear ;
+    animation-delay: 6s;
+}
+
+footer div {
+    text-align: center;
+    background-color: #0e4613;
+}
+
+footer div p {
+    font-family: var(--ff-contact);
+    color: var(--fc-title-outline);
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.39));
+    padding: 50px;
+}
+
+footer div p a {
+    text-decoration: none;
+    text-transform: none;
+    color: var(--fc-title-outline);
+}
+
+/* animations */
+
+
+@keyframes mole {
+    0% {
+        background-image: url(../img/toupeira1.svg);
+    }
+
+    20% {
+        background-image: url(../img/toupeira2.svg);
+    }
+
+    40% {
+        background-image: url(../img/toupeira3.svg);
+    }
+
+    60% {
+        background-image: url(../img/toupeira4.svg);
+    }
+
+    80% {
+        background-image: url(../img/toupeira5.svg);
+    }
+
+    100% {
+        background-image: url(../img/toupeira6.svg);
+    }
+}
