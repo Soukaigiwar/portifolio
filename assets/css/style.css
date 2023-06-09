@@ -37,7 +37,7 @@ header p {
 }
 
 .content {
-	height: 800vh;
+	/* height: 800vh; */
 	font-size: 30px;
 
 	background-image: url(../img/night_sky.jpg),
@@ -65,6 +65,18 @@ header p {
 .content li p {
 	display: flex;
 	width: 400px;
+}
+
+.content li p img {
+	width: 140px;
+}
+
+.content span {
+	display: flex;
+	flex-direction: column;
+	/* flex-wrap: wrap; */
+	width: 380px;
+	font-size: 14px;
 }
 
 .thumbnail {

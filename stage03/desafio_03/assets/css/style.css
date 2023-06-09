@@ -7,8 +7,8 @@
 :root {
     --ff-title: 'Cherry Bomb One', cursive;
     --ff-contact: 'Nunito Sans', sans-serif;
-    --fs-title: 10rem;
-    --fc-title: rgb(184, 79, 19);
+    --fs-title: 7rem;
+    --fc-title: rgb(94, 255, 0);
     --fc-title-outline: rgb(255, 255, 255);
     font-size: 62.5%;
 }
@@ -25,11 +25,12 @@ main {
 }
 
 main header {
-
+    position: relative;
 }
 
 main header h1 {
-    margin: 5px auto 25px;
+    margin: 0px 220px 0px 0px;
+    padding: 30px 75px 0px 0px;
     height: 100px;
 
     font-family: var(--ff-title);
@@ -44,6 +45,13 @@ main header h1 {
     -webkit-text-stroke: 1px var(--fc-title-outline);
     
     text-align: center;
+}
+
+main header img {
+    position: absolute;
+    left: 65%;
+    top: 1%;
+    z-index: -1;
 }
 
 main .gameArea {   
