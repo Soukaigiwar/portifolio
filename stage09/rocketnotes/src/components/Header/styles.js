@@ -1,5 +1,6 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 
 export const Container = styled.header`
     grid-area: header;
@@ -10,12 +11,12 @@ export const Container = styled.header`
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-
+    
     display: flex;
     justify-content: space-between;
     
-    padding: 0 80px;    
-`
+    padding: 0 80px;
+`;
 
 export const Profile = styled(Link)`
     display: flex;
@@ -43,14 +44,14 @@ export const Profile = styled(Link)`
             color: ${({ theme }) => theme.COLORS.WHITE};
         }
     }
-    `
+`;
 
 export const Logout = styled.button`
-    border: none;
+    border: 0;
     background: none;
-    
+
     > svg {
         color: ${({ theme }) => theme.COLORS.GRAY_100};
         font-size: 36px;
     }
-`
+`;

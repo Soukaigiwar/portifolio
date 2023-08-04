@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     * {
@@ -10,7 +10,6 @@ export default createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
         color: ${({ theme }) => theme.COLORS.WHITE};
-
         -webkit-font-smoothing: antialiased;
     }
 
@@ -26,10 +25,10 @@ export default createGlobalStyle`
 
     button, a {
         cursor: pointer;
-        transition: filter 0.2s; 
+        transition: filter 0.2s;
     }
-    
+
     button:hover, a:hover {
         filter: brightness(0.9);
     }
-`
+`;
