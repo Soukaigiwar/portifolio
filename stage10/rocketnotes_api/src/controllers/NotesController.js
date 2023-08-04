@@ -100,7 +100,7 @@ class NotesController {
                 note_id,
                 name,
                 user_id
-            }
+            };
         });
 
         await knex("tags").insert(tagsInsert);

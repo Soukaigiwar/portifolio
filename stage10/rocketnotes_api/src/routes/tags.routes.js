@@ -1,4 +1,4 @@
-const { Router, json } = require("express");
+const { Router } = require("express");
 const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
 const TagsControler = require("../controllers/TagsController");

@@ -1,5 +1,4 @@
-const AppError = require("../utils/AppError");
-const { Router, json } = require("express");
+const { Router } = require("express");
 const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
 const NotesController = require("../controllers/NotesController");

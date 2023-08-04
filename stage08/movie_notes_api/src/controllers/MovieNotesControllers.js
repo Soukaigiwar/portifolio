@@ -1,73 +1,76 @@
-const { response } = require("express")
-const knex = require("../database/knex")
-const AppError = require("../utils/AppError")
+const { response } = require("express");
+const knex = require("../database/knex");
+const AppError = require("../utils/AppError");
 
 class MovieNotesController {
     async create(request, response) {
-        const { title, description, user_id, rating, tags } = request.body
-        const validateUserId = await knex("users").where({ id: user_id }).first()
+        const { title, description, rating, tags } = request.body;
+        const user_id = request.user.id;
 
-        if (!validateUserId) {
-            throw new AppError("Usuário inválido")
-        }
+        if (!rating || rating <= 0 || rating >= 6) {
+            throw new AppError("A avaliação (rating) precisa ser entre 1 e 5.");
+        };
 
-        if (!rating || rating <=0 || rating >= 6) {
-            throw new AppError("A avaliação (rating) precisa ser entre 1 e 5.")
-        }
-
-        const note_id = await knex("movie_notes").insert({
+        const [note_id] = await knex("movie_notes").insert({
             title,
             description,
             user_id,
             rating
-        })
+        });
 
         const movieTagsInsert = tags.map(name => {
+            console.log("dentro");
             return {
                 note_id,
+                name,
                 user_id,
-                name
-            }
-        })
-        console.log("aqui");
+            };
+        });
 
-        console.log(movieTagsInsert);
+        await knex("movie_tags").insert(movieTagsInsert);
 
-        await knex("movie_tags").insert(movieTagsInsert)
-
-        response.status(201).json()
-    }
+        return response.status(201).json();
+    };
 
     async show(request, response) {
-        const { id } = request.body
-        const movieNote = await knex("movie_notes").where({ id }).first()
+        const { id } = request.params;
+        const user_id = request.user.id;
+
+        const movieNote = await knex("movie_notes")
+            .where({ user_id })
+            .where({ id })
+            .first();
+
         const movieTags = await knex("movie_tags")
             .where({ note_id: id })
-            .orderBy("name")
+            .orderBy("name");
 
         return response.json({
             ...movieNote,
             movieTags
-        })
-    }
+        });
+    };
 
     async index(request, response) {
-        const { user_id } = request.query
+        const user_id = request.user.id;
 
-        console.log(user_id);
         const movieNotes = await knex("movie_notes")
             .where({ user_id })
-            .orderBy("title")
-        response.json( movieNotes )
-    }
+            .orderBy("title");
+
+        return response.json(movieNotes);
+    };
 
     async delete(request, response) {
-        const { id } = request.body
+        const { id } = request.params;
+        const user_id = request.user.id;
 
-        await knex("movie_notes").where({ id }).delete()
+        await knex("movie_notes")
+            .where({ user_id })
+            .where({ id }).delete();
 
-        response.json()
-    }
-}
+        return response.json();
+    };
+};
 
-module.exports = MovieNotesController
+module.exports = MovieNotesController;
