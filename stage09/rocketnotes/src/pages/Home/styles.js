@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-export const Container= styled.div`
+export const Container = styled.div`
     width: 100%;
     height: 100vh;
 
@@ -53,9 +53,26 @@ export const Search = styled.div`
 export const Content = styled.div`
     grid-area: content;
 
-    padding: 0 64px;
+    padding: 0 57px 0 64px;
     overflow-y: auto;
 
+    &::-webkit-scrollbar
+    {
+        width: 14px;
+        height: 2px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        border: 3px solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+        border-radius: 10px;
+        background-color: ${({ theme }) => theme.COLORS.ORANGE};
+    }
 `
 
 export const NewNote = styled(Link)`

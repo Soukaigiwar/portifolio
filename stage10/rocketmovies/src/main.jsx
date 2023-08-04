@@ -17,5 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes />
       </AuthProvider>
     </ThemeProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
