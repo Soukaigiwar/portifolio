@@ -9,6 +9,7 @@ class SessionsController {
         const { email, password } = request.body;
 
         const user = await knex("users")
+            .select('name', 'email', 'password', 'avatar')
             .where({ email })
             .first();
         
@@ -21,6 +22,8 @@ class SessionsController {
         if (!passwordMatched) {
             throw new AppError("Email e/ou senha inválidos.", 401);
         };
+
+        delete user.password;
 
         const { secret, expiresIn } = authConfig.jwt;
         const token = sign({}, secret, {
