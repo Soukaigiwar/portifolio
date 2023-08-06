@@ -9,7 +9,7 @@ class SessionsController {
         const { email, password } = request.body;
 
         const user = await knex("users")
-            .select('name', 'email', 'password', 'avatar')
+            .select('id', 'name', 'email', 'password', 'avatar')
             .where({ email })
             .first();
         

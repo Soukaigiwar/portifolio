@@ -15,7 +15,7 @@ function AuthProvider({ children }) {
             localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
             localStorage.setItem("@rocketnotes:token", token);
 
-            api.defaults.headers.authorization = `Bearer ${token}`;
+            api.defaults.headers.common['authorization'] = `Bearer ${token}`;
             setData({ user, token });
         } catch (e) {
             if (e.response) {
@@ -31,25 +31,42 @@ function AuthProvider({ children }) {
         localStorage.removeItem("@rocketnotes:token");
 
         setData({});
-    }
+    };
+
+    async function updateProfile({ user }) {
+        try {
+            const { status } = await api.put("/users", user);
+
+            localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
+
+            setData({ user, token: data.token });
+            alert("Perfil atualizado.");
+            return status;
+        } catch (e) {
+            if (e.response) {
+                alert(e.response.data.message);
+            } else {
+                alert("Erro ao atualizar perfil.");
+            };
+        };
+    };
 
     useEffect(() => {
         const user = localStorage.getItem("@rocketnotes:user");
         const token = localStorage.getItem("@rocketnotes:token");
 
         if (user && token) {
-            api.defaults.headers.authorization = `Bearer ${token}`;
+            api.defaults.headers.common['authorization'] = `Bearer ${token}`;
 
             setData({
                 token,
                 user: JSON.parse(user)
             });
-
-        }
+        };
     }, []);
 
     return (
-        <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
+        <AuthContext.Provider value={{ signIn, signOut, user: data.user, updateProfile }}>
             {children}
         </AuthContext.Provider>
     );

@@ -12,17 +12,13 @@ function ensureAuthenticated(request, response, next) {
     const [, token] = authHeader.split(" ");
 
     try {
-        //const { sub } = verify(token, authConfig.jwt.secret);
         const { sub: user_id } = verify(token, authConfig.jwt.secret);
 
-        
         request.user = {
             id: Number(user_id)
         };
-        
-        console.log(request.user);
-        return next();
 
+        return next();
     } catch (error) {
         throw new AppError("JWT Token não informado.", 401);
     };
