@@ -1,5 +1,4 @@
 class GenerateUsers {
-
     gender = 'mix';
     quantity = 10;
     users = [];
@@ -1101,8 +1100,8 @@ class GenerateUsers {
                 email: email,
                 password: `$2a$08$JjZyjT1k9WAAoUuf86nWG.c7Kx7/96wG1PWuuxZ7VI9HPe50AzLVW`
                 //default password "123"
-            }
-        }
+            };
+        };
 
         if (this.gender == 'male') {
             const firstNameSorted = Math.floor(Math.random() * this.maleNames.length);
@@ -1115,7 +1114,7 @@ class GenerateUsers {
                 email: email,
                 password: `$2a$08$JjZyjT1k9WAAoUuf86nWG.c7Kx7/96wG1PWuuxZ7VI9HPe50AzLVW`
                 //default password "123"
-            }
+            };
         }
 
         if (this.gender == 'female') {
@@ -1129,8 +1128,8 @@ class GenerateUsers {
                 email: email,
                 password: `$2a$08$JjZyjT1k9WAAoUuf86nWG.c7Kx7/96wG1PWuuxZ7VI9HPe50AzLVW`
                 //default password "123"
-            }
-        }
+            };
+        };
     };
 
     generateNames() {
@@ -1142,8 +1141,8 @@ class GenerateUsers {
             if (!uniqueEmailUser.has(user.email)) {
                 uniqueEmailUser.add(user);
                 this.users.push(user);
-            }
-        }
+            };
+        };
 
         return this.users;
     };

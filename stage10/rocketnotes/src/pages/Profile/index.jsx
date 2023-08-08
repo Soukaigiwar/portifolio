@@ -1,11 +1,16 @@
-import { useState } from 'react';
-import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/Fi';
-import { Link, useNavigate } from 'react-router-dom';
-import { Container, Form, Avatar } from './styles';
-import { Input } from '../../components/Input';
-import { Button } from '../../components/Button';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/Fi";
 
-import { useAuth } from '../../hooks/auth';
+import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
+
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+
+import { Container, Form, Avatar } from "./styles";
+
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
 
 export function Profile() {
     const { user, updateProfile, signOut } = useAuth();
@@ -16,33 +21,62 @@ export function Profile() {
     const [passwordOld, setPasswordOld] = useState("");
     const [passwordNew, setPasswordNew] = useState("");
 
+    const avatarUrl = user.avatar
+        ? `${api.defaults.baseURL}/files/${user.avatar}`
+        : avatarPlaceholder;
+
+    const [avatar, setAvatar] = useState(avatarUrl);
+    const [avatarFile, setAvatarFile] = useState(null);
+
+    function handleBack() {
+        navigate(-1);
+    };
+
     async function handleUpdate() {
-        const user = {
+        const updated = {
             name,
             email,
             password: passwordNew,
             old_password: passwordOld
         };
 
-        const status = await updateProfile({ user });
+        const userUpdated = Object.assign(user, updated);
+
+        const status = await updateProfile({ user: userUpdated, avatarFile });
 
         if (passwordNew !== "" && status === 200) {
             signOut();
             navigate("/");
-        }
+        };
+
+        handleBack();
+    };
+
+    async function handleChangeAvatar(event) {
+        const file = event.target.files[0];
+        setAvatarFile(file);
+
+        const imagePreview = URL.createObjectURL(file);
+        setAvatar(imagePreview);
     };
 
     return (
         <Container>
             <header>
-                <Link to="/"><FiArrowLeft /></Link>
+                <button type="button" onClick={handleBack}>
+                    <FiArrowLeft size={24} />
+                </button>
             </header>
             <Form>
                 <Avatar>
-                    <img src="https://github.com/Soukaigiwar.png" alt="Foto do Usuario" />
+                    <img src={avatar} alt="Foto do Usuario" />
                     <label htmlFor="avatar">
                         <FiCamera />
-                        <input id="avatar" type="file" />
+                        <input
+                            id="avatar"
+                            type="file"
+                            onChange={handleChangeAvatar}
+                        />
                     </label>
                 </Avatar>
                 <Input
@@ -74,5 +108,5 @@ export function Profile() {
                 <Button title="Salvar" onClick={handleUpdate} />
             </Form>
         </Container>
-    )
-}
+    );
+};

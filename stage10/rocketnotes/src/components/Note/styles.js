@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.button`
     width: 100%;
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-
-    border: none;
-    border-radius: 10px;
 
     padding: 22px;
+    border: none;
     margin-bottom: 16px;
+
+    border-radius: 10px;
+
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
 
     > h1 {
         flex: 1;
@@ -21,8 +22,8 @@ export const Container = styled.button`
     }
 
     > footer {
-        width: 100%;
         display: flex;
+        width: 100%;
         margin-top: 24px;
     }
 `;

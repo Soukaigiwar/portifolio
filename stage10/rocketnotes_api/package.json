@@ -4,17 +4,20 @@
   "description": "Rocket Notes API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "dm": "knex migrate:latest && nodemon ./src/server.js",
-    "dms": "knex migrate:latest && knex seed:run && nodemon ./src/server.js"
+    "dev-migrate": "knex migrate:latest && nodemon ./src/server.js",
+    "dev-migrate-seed": "knex migrate:latest && knex seed:run && nodemon ./src/server.js"
   },
   "keywords": [
     "api",
     "nodejs",
     "javascript",
-    "express"
+    "express",
+    "encryp",
+    "jsonwebtoken",
+    "knex",
+    "multer"
   ],
   "author": "Sergio Mello",
   "license": "ISC",

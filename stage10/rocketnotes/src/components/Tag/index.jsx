@@ -5,5 +5,5 @@ export function Tag({ title = "title", ...rest }) {
         <Container {...rest}>
             {title}
         </Container>
-    )
-}
+    );
+};

@@ -13,8 +13,7 @@ exports.seed = async function (knex) {
   const dataList = list.generateNames();
 
   await knex.transaction(function (tr) {
-    return knex.batchInsert('users', dataList, chunkSize)
-      .transacting(tr);
+    return knex.batchInsert('users', dataList, chunkSize).transacting(tr);
   });
 
   await knex.raw('DELETE FROM users WHERE id in (SELECT id FROM users GROUP BY name, email HAVING COUNT(*) > 1)');

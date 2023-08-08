@@ -12,7 +12,7 @@ class SessionsController {
             .select('id', 'name', 'email', 'password', 'avatar')
             .where({ email })
             .first();
-        
+
         if (!user) {
             throw new AppError("Email e/ou senha inválidos.", 401);
         };

@@ -5,5 +5,5 @@ export function Textarea({ value, ...rest }) {
         <Container {...rest}>
             {value}
         </Container>
-    )
-}
+    );
+};

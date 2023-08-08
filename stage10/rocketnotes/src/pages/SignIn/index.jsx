@@ -1,12 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
-import { Container, Form, Background } from "./styles";
 import { FiMail, FiLock } from "react-icons/Fi";
 
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
-import { Link } from "react-router-dom";
+import { Container, Form, Background } from "./styles";
 
 export function SignIn() {
     const [email, setEmail] = useState("");
@@ -15,8 +15,8 @@ export function SignIn() {
 
     function handleSignIn() {
         signIn({ email, password });
-    }
-    
+    };
+
     return (
         <Container>
             <Form>
@@ -36,7 +36,6 @@ export function SignIn() {
                     onChange={e => setPassword(e.target.value)}
                 />
                 <Button title="Entrar" onClick={ handleSignIn }/>
-                
                 <Link to="/register">Criar Conta</Link>
             </Form>
             <Background />

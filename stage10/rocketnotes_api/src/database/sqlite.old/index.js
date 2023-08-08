@@ -1,6 +1,6 @@
-const sqlite3 = require("sqlite3")
-const sqlite = require("sqlite")
-const path = require("path")
+const sqlite3 = require("sqlite3");
+const sqlite = require("sqlite");
+const path = require("path");
 
 async function sqliteConnection() {
     const database = await sqlite.open({
@@ -9,6 +9,6 @@ async function sqliteConnection() {
     });
 
     return database;
-}
+};
 
 module.exports = sqliteConnection;

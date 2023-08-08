@@ -3,17 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+
+    padding-right: 16px;
+    margin-bottom: 8px;
+    border: ${({ theme, $isnew }) => $isnew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
+    border-radius: 10px;
 
     background-color: ${({ theme, $isnew }) => $isnew ? "transparent" : theme.COLORS.BACKGROUND_900};
-
     color: ${({ theme }) => theme.COLORS.GRAY_300};
-
-    border: ${({ theme, $isnew }) => $isnew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
-
-    margin-bottom: 8px;
-    border-radius: 10px;
-    padding-right: 16px;
 
     > button {
         border: none;
@@ -33,9 +30,10 @@ export const Container = styled.div`
         width: 100%;
 
         padding: 12px;
+        border: none;
+
         color: ${({ theme }) => theme.COLORS.WHITE};
         background: transparent;
-        border: none;
 
         &::placeholder {
             color: ${({ theme }) => theme.COLORS.GRAY_300};

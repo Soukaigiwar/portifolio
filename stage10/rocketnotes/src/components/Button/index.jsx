@@ -9,5 +9,5 @@ export function Button({ title = 'Título', loading = false, ...rest }) {
         >
             {loading ? 'Carregando...' : title}
         </Container>
-    )
-}
+    );
+};

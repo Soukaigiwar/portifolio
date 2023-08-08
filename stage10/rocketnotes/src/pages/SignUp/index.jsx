@@ -1,13 +1,13 @@
-import { Container, Form, Background } from "./styles";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FiMail, FiLock, FiUser } from "react-icons/Fi";
+
+import { api } from "../../services/api";
 
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-
-import { api } from '../../services/api';
+import { Container, Form, Background } from "./styles";
 
 export function SignUp() {
     const [name, setName] = useState("");
@@ -23,7 +23,7 @@ export function SignUp() {
 
         api.post("/users", { name, email, password })
             .then(() => {
-                alert('Usuário cadastrado com sucesso!')
+                alert("Usuário cadastrado com sucesso!")
                 navigate("/");
             })
             .catch(e => {
@@ -33,7 +33,6 @@ export function SignUp() {
                     alert("Não foi possível cadastrar.");
                 };
             });
-
     };
 
     return (
@@ -61,11 +60,10 @@ export function SignUp() {
                     icon={FiLock}
                     onChange={e => setPassword(e.target.value)}
                 />
-
                 <Button title="Cadastrar" onClick={handleSignUp} />
 
                 <Link to="/">Voltar para o login</Link>
             </Form>
         </Container>
-    )
-}
+    );
+};

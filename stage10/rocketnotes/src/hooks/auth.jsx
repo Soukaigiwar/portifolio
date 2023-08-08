@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { api } from "../services/api";
-import { useAsyncError } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
@@ -33,14 +32,22 @@ function AuthProvider({ children }) {
         setData({});
     };
 
-    async function updateProfile({ user }) {
+    async function updateProfile({ user, avatarFile }) {
         try {
+            if (avatarFile) {
+                const fileUploadForm = new FormData();
+                fileUploadForm.append("avatar", avatarFile);
+                const response = await api.patch("/users/avatar", fileUploadForm);
+                user.avatar = response.data.avatar;
+            };
+
             const { status } = await api.put("/users", user);
 
             localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
 
             setData({ user, token: data.token });
             alert("Perfil atualizado.");
+
             return status;
         } catch (e) {
             if (e.response) {

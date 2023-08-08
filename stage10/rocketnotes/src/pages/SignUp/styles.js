@@ -2,19 +2,19 @@ import styled from 'styled-components';
 import backgroundImg from '../../assets/Background.png';
 
 export const Container = styled.div`
-    height: 100vh;
-
     display: flex;
     align-items: stretch;
+    height: 100vh;
 `;
 
 export const Form = styled.form`
-    padding: 0 136px;
-
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+
+    padding: 0 136px;
+
     text-align: center;
 
     > h1 {
@@ -23,8 +23,8 @@ export const Form = styled.form`
     }
 
     > h2 {
-        font-size: 24px;
         margin: 48px 0;
+        font-size: 24px;
     }
 
     > p {

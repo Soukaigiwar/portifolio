@@ -1,38 +1,100 @@
-import { Container, Links, Content } from "./styles";
-import { Header } from "../../components/Header";
-import { Section } from "../../components/Section";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
+import { api } from "../../services/api";
+
 import { Tag } from "../../components/Tag";
 import { Button } from "../../components/Button";
+import { Header } from "../../components/Header";
+import { Section } from "../../components/Section";
 import { ButtonText } from "../../components/ButtonText";
 
+import { Container, Links, Content } from "./styles";
+
 export function Details() {
-  return (
-    <Container>
-      <Header />
+    const params = useParams();
+    const [data, setData] = useState(null);
+    const [links, setLinks] = useState(null);
+    const navigate = useNavigate();
 
-      <main>
-        <Content>
-          <ButtonText title="Excluir nota" isActive={true} />
+    function handleBack() {
+        navigate(-1);
+    };
 
-          <h1>Introdução ao React</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, alias? Amet, obcaecati delectus assumenda error odio perspiciatis repellendus corrupti et consequuntur fuga, ab eius aliquid inventore odit sed quia temporibus.
-          Impedit odio distinctio atque adipisci officia doloribus magnam obcaecati, velit illo numquam nihil mollitia labore accusamus aperiam dolore. Quidem debitis iusto quos consectetur minus iste officiis alias perspiciatis, nobis expedita.
-          Quae, tempora ipsam recusandae tenetur dolorum, amet voluptatibus autem earum ex minima assumenda natus nam aliquid quia laboriosam harum ipsum molestiae sed odio voluptatem ipsa animi. Error asperiores officiis ex?</p>
-          <Section title="Links Úteis">
-            <Links>
-              <li><a href="#">https://github.com/Soukaigiwar</a></li>
-              <li><a href="#">https://portifolio.sergiomello.online</a></li>
-            </Links>
-          </Section>
-          <Section title="Marcadores">
-            <Tag title="Express" />
-            <Tag title="Node" />
-          </Section>
-          <Button title="Botão 1" loading={true}/>
-          <Button title="Botão 2" loading={false} />
-          <Button />
-        </Content>
-      </main>
-    </Container>
-  )
-}
+    async function handleRemoveNote() {
+        const confirm = window.confirm("Deseja excluir essa nota?");
+
+        if (confirm) {
+            await api.delete(`/notes/${data.id}`);
+            handleBack();
+        };
+    };
+
+    useEffect(() => {
+        async function fetchNote() {
+            const response = await api.get(`/notes/${params.id}`);
+            const shortUrl = response.data.links.map(link => {
+                return {
+                    ...link,
+                    shortUrl: link.url.replace(/^https?:\/\//, "")
+                };
+            });
+
+            setLinks(shortUrl);
+            setData(response.data);
+        };
+
+        fetchNote();
+    }, []);
+
+    return (
+        <Container>
+            <Header />
+            {
+                data &&
+                <main>
+                    <Content>
+                        <ButtonText
+                            title="Excluir nota"
+                            isActive={true}
+                            onClick={handleRemoveNote}
+                        />
+                        <h1>{data.title}</h1>
+                        <p>{data.description}</p>
+                        {
+                            links &&
+                            <Section title="Links Úteis">
+                                <Links>
+                                    {
+                                        links.map(link => (
+                                            <li key={String(link.id)}>
+                                                <a
+                                                    href={link.url}
+                                                    target="_blank"
+                                                >
+                                                    {link.shortUrl}
+                                                </a>
+                                            </li>
+                                        ))
+                                    }
+                                </Links>
+                            </Section>
+                        }
+
+                        {
+                            data.tags &&
+                            <Section title="Marcadores">
+                                {
+                                    data.tags.map(tag => (
+                                        <Tag key={tag.id} title={tag.name} />
+                                    ))
+                                }
+                            </Section>
+                        }
+                        <Button title="Voltar" onClick={handleBack} />
+                    </Content>
+                </main>
+            }
+        </Container>
+    );
+};

@@ -1,16 +1,8 @@
+const { hash, compare } = require("bcryptjs");
 const AppError = require("../utils/AppError");
 const knex = require("../database/knex");
-const { hash, compare } = require("bcryptjs");
 
 class UsersController {
-    // async index(request, response) {
-
-    //     const users = await knex("users")
-    //         .limit(10);
-
-    //     return response.status(201).json(users);
-    // };
-
     async show(request, response) {
         const user_id = request.user.id;
 
@@ -27,7 +19,9 @@ class UsersController {
         const checkUserExists = await knex("users")
             .where({ email });
 
-        if (checkUserExists.length > 0) throw new AppError("Este e-email já está em uso.");
+        if (checkUserExists.length > 0) {
+            throw new AppError("Este e-email já está em uso.");
+        };
 
         const hashedPassword = await hash(password, 8);
 
@@ -51,7 +45,6 @@ class UsersController {
 
         if (!user) { throw new AppError("Usuário não encontrado") };
 
-        console.log(email);
         const userWithUpdatedEmail = await knex("users")
             .where({ email })
             .first();
@@ -92,7 +85,7 @@ class UsersController {
     };
 
     async delete(request, response) {
-        const  user_id  = request.user.id;
+        const user_id = request.user.id;
 
         await knex("users")
             .where({ id: user_id })
