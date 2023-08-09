@@ -1,13 +1,13 @@
-const { Router } = require("express")
+const { Router } = require("express");
 
-const MovieTagsControllers = require("../controllers/MovieTagsControllers")
+const MovieTagsControllers = require("../controllers/MovieTagsControllers");
 
-const ensureAuthenticated = require("../middlewares/ensureAuthenticated")
+const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
-const movieTagsController = new MovieTagsControllers()
+const movieTagsController = new MovieTagsControllers();
 
-const movieTagsRoutes = Router()
+const movieTagsRoutes = Router();
 
-movieTagsRoutes.get("/", ensureAuthenticated, movieTagsController.index)
+movieTagsRoutes.get("/", ensureAuthenticated, movieTagsController.index);
 
-module.exports = movieTagsRoutes
+module.exports = movieTagsRoutes;
