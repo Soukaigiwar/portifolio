@@ -26,6 +26,10 @@ export const Container = styled.div`
             color: ${({ theme }) => theme.COLORS.WHITE};
         }
 
+        &:focus {
+            outline: none;
+        }
+
     }
 
     > svg {

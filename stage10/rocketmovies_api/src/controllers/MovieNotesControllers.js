@@ -21,23 +21,28 @@ class MovieNotesController {
             throw new AppError("Precisa ter alguma tag.");
         };
 
-        const [note_id] = await knex("movie_notes").insert({
+        const [movie_note_id] = await knex("movie_notes").insert({
             title,
             description,
             user_id,
             rating
         });
 
+        console.log("id da nota cadastrada: ", movie_note_id);
+        console.log("qtd de tags: ", tags.length);
+
         if (tags.length !== 0) {
             const movieTagsInsert = tags.map(name => {
                 name = name.toLowerCase();
+                console.log("name da tag: ",name);
                 return {
-                    name,
-                    note_id,
-                    user_id
+                    movie_note_id,
+                    user_id,
+                    name
                 };
             });
-
+            console.log(movieTagsInsert);
+            
             await knex("movie_tags").insert(movieTagsInsert);
         };
 
@@ -102,7 +107,7 @@ class MovieNotesController {
             .where({ user_id });
 
         const moviesWithTags = movieNotes.map(movieNote => {
-            const currentMovieTags = userTags.filter(tag => tag.note_id === movieNote.id);
+            const currentMovieTags = userTags.filter(tag => tag.movie_note_id === movieNote.id);
             
             return {
                 ...movieNote,
@@ -110,7 +115,7 @@ class MovieNotesController {
             };
         });
 
-        return response.json({ moviesWithTags });
+        return response.json(moviesWithTags);
     };
 
     async delete(request, response) {

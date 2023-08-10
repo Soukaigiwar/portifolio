@@ -1,33 +1,24 @@
-import { Container } from "./styles"
-// import { useEffect, useState } from "react"
-// import { useAuth } from "../../hooks/auth"
-// import { api } from "../../services/api"
-// import { useParams } from 'react-router-dom';
+import { Container } from "./styles";
+import { Stars } from "../Stars";
+import { Tag } from "../Tag";
+
 
 
 export function Movie({ data, ...rest }) {
-    // const { user } = useAuth()
-    // const params = useParams();
-    // const [movies, setMovies] = useState([])
-    // const [search, setSearch] = useState("")
-
-    // useEffect(() => {
-    //     async function fetchMovies() {
-    //         const response = await api.get(`${api.defaults.baseURL}/movieNotes/${params.id}`)
-    //         setMovies(response.data)
-    //     }
-
-    //     fetchMovies()
-    // }, [])
-
+    
     return (
         <Container {...rest}>
+
+            <h2>{data.title}</h2>
+            <Stars rating={data.rating} />
+            <p>{data.description}</p>
             {
-                console.log(data)
-                // data.map(movie => {
-                //     <MovieItem key={String(movie.id)} title={movie.title} rating={movie.rating} />
-                // })
+                data.tags && data.tags.map(tag => (
+                    <Tag key={tag.id} title={tag.name}/>
+                ))
             }
+
         </Container>
     )
 }
+

@@ -46,7 +46,7 @@ class UsersControllers {
         if (!user) {
             throw new AppError("Usuário não encontrado.", 401);
         };
-        
+
         const emailExist = await knex("users").where({ email }).first();
 
         if (emailExist && emailExist.id !== user.id) {
@@ -70,23 +70,36 @@ class UsersControllers {
             user.password = await hash(new_password, 8);
         };
 
-        // Default password: !234qwerT
-
         const evalNewPassword = new EvalNewPassword;
         const newPasswordEvaluated = evalNewPassword.checkIfPasswordIsValid(new_password);
 
-        if (new_password.length >= 8 && newPasswordEvaluated) {
+        if (new_password === "" && old_password === "") {
             await knex("users").where('id', user_id).update({
                 name,
                 email,
-                password: user.password,
                 updated_at: knex.fn.now()
             });
 
             return response.status(200).json();
         } else {
-            throw new AppError("A senha não atende os requisitos mínimos.", 401);
-        };
+            if (new_password.length >= 8 && newPasswordEvaluated) {
+                await knex("users").where('id', user_id).update({
+                    name,
+                    email,
+                    password: user.password,
+                    updated_at: knex.fn.now()
+                });
+
+                return response.status(200).json();
+            } else {
+                throw new AppError("A senha não atende os requisitos mínimos.", 401);
+            };
+        }
+
+        // Default password: !234qwerT
+
+
+
     };
 };
 

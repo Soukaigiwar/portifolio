@@ -54,5 +54,9 @@ export const Container = styled.div`
         &::placeholder {
             color: ${({ theme }) => theme.COLORS.GRAY_900};
         }
+
+        &:focus {
+            outline: none;
+        }
     }
 `

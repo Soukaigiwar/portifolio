@@ -11,21 +11,22 @@ import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg"
 
 export function Profile() {
     const { user, updateProfile } = useAuth()
+    const navigate = useNavigate();
 
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
     const [passwordOld, setPasswordOld] = useState("")
     const [passwordNew, setPasswordNew] = useState("")
 
-    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+    const avatarUrl = user.avatar
+        ? `${api.defaults.baseURL}/files/${user.avatar}`
+        : avatarPlaceholder
 
     const [avatar, setAvatar] = useState(avatarUrl)
     const [avatarFile, setAvatarFile] = useState(null)
-
-    const navigate = useNavigate();
-
+    
 	function historyBack() {
-		navigate(-1);
+        navigate(-1);
 	}
 
     async function handleUpdate() {
@@ -61,10 +62,7 @@ export function Profile() {
 
             <Form>
                 <Avatar>
-                    <img
-                        src={avatar}
-                        alt="Foto do Usuário"
-                    />
+                    <img src={avatar} alt="Foto do Usuário" />
                     <label htmlFor="avatar">
                         <FiCamera />
                         <Input

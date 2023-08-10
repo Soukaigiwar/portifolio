@@ -17,6 +17,10 @@ export const Container = styled.textarea`
         color: ${({ theme }) => theme.COLORS.GRAY_300};
     }
 
+    &:focus {
+        outline: none;
+    }
+
     &::-webkit-scrollbar {
         width: 2.4rem;
     }

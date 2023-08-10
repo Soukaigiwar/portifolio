@@ -2,7 +2,7 @@ import { FiPlus, FiSearch } from "react-icons/fi"
 import { Button } from "../../components/Button"
 import { Header } from "../../components/Header"
 import { Input } from '../../components/Input'
-import { Movie } from "../../components/Movie"
+import { MovieItem } from "../../components/MovieItem"
 import { Container } from './styles'
 import { useEffect, useState } from "react"
 import { api } from "../../services/api"
@@ -10,12 +10,12 @@ import { useAuth } from "../../hooks/auth"
 
 export function Home() {
     const [movies, setMovies] = useState([])
-    const { user } = new useAuth()
-    
+
 
     useEffect(() => {
         async function fetchMovies() {
-            const response = await api.get("/movieNotes", { id: 3 } )
+            const response = await api.get("/movieNotes")
+            console.log(response);
             setMovies(response.data)
         }
 
@@ -38,15 +38,13 @@ export function Home() {
                 />
             </div>
             {
-                movies.map(movie => {
-                    <Movie
-                        key={String(movie.id)}
-                        data={movie}
-                        onclick={() => {}}
-                    />
-                })
+                movies.map(movie => (
+                    <MovieItem key={movie.id} data={movie} />
+
+                    
+                ))
             }
-            
+                
         </Container>
     )
 }

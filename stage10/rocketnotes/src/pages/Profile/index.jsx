@@ -45,8 +45,8 @@ export function Profile() {
         const status = await updateProfile({ user: userUpdated, avatarFile });
 
         if (passwordNew !== "" && status === 200) {
-            signOut();
             navigate("/");
+            signOut();
         };
 
         handleBack();
