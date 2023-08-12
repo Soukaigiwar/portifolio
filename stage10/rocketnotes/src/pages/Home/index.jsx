@@ -50,6 +50,7 @@ export function Home() {
 
     useEffect(() => {
         async function fetchNotes() {
+            return console.log(search);
             const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`);
             setNotes(response.data);
         };

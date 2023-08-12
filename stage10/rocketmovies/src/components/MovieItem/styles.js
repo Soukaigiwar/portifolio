@@ -1,11 +1,10 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    display: flex;
 
+    margin-bottom: 2.4rem;
     width: 100%;
     padding: 3.2rem;
-    flex-direction: column;
     border-radius: 1.6rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_PINK};
 
@@ -19,10 +18,10 @@ export const Container = styled.div`
         font-size: 1.6rem;
         margin-top: 1.5rem;
         
-        color: ${({ theme }) => theme.COLORS.GRAY_700};
-
-        background-color: transparent;
         border: none;
+        
+        color: ${({ theme }) => theme.COLORS.GRAY_700};
+        background-color: transparent;
         
         overflow: hidden;
         text-overflow: ellipsis;
@@ -35,5 +34,6 @@ export const Container = styled.div`
         width: 100%;
         display: flex;
         margin-top: 1.5rem;
+        cursor: default;
     }
 `

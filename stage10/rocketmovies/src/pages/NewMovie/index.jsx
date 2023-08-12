@@ -3,15 +3,15 @@ import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom"
 import { Container, Form } from "./styles"
 import { FiSearch } from "react-icons/fi"
-import { BackButton } from "../../components/BackButton"
+import { TextButton } from "../../components/TextButton"
 import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
-import { TagItem } from "../../components/TagItem"
+import { TagInput } from "../../components/TagInput"
 import { Button } from "../../components/Button"
 import { Header } from "../../components/Header"
 
 
-export function CreateMovie() {
+export function NewMovie() {
     const [title, setTitle] = useState("")
     const [rating, setRating] = useState("")
     const [description, setDescription] = useState("")
@@ -21,16 +21,18 @@ export function CreateMovie() {
 
     const navigate = useNavigate()
 
+    const handleBack = () => navigate(-1);
+
     async function handleNewMovie() {
         if (!title) return alert("Preencha o Título.")
         if (!rating) return alert("Dê uma nota de 1 a 5")
         if (newTag) return alert("Você precisa confirmar o campo da tag ou deixar em branco.")
 
         await api.post("/movieNotes", {
-                title,
-                description,
-                rating,
-                tags
+            title,
+            description,
+            rating,
+            tags
         })
 
         alert("Adicionado filme com sucesso.")
@@ -53,11 +55,10 @@ export function CreateMovie() {
             </Header>
 
             <main>
+                <TextButton onClick={handleBack} />
                 <Form>
-                    <BackButton />
-
                     <h2>Novo Filme</h2>
-                    <div className="double_input">
+                    <div className="input_area">
                         <Input
                             placeholder="Título"
                             onChange={e => setTitle(e.target.value)}
@@ -72,17 +73,17 @@ export function CreateMovie() {
                         onChange={e => setDescription(e.target.value)}
                     />
                     <h3>Marcadores</h3>
-                    <div className="tag_item">
+                    <div className="tags_area">
                         {
                             tags.map((tag, index) => (
-                                <TagItem
+                                <TagInput
                                     key={String(index)}
                                     value={tag}
                                     onClick={() => handleRemoveTag(tag)}
                                 />
                             ))
                         }
-                        <TagItem
+                        <TagInput
                             isNew
                             placeholder="Novo marcador"
                             onChange={e => setNewTag(e.target.value)}
@@ -90,13 +91,10 @@ export function CreateMovie() {
                             onClick={handleAddTag}
                         />
                     </div>
-                    <div className="button_area">
-                        <button>Excluir filme</button>
-                        <Button
-                            title="Salvar alterações"
-                            onClick={handleNewMovie}
-                        />
-                    </div>
+                    <Button
+                        title="Salvar alterações"
+                        onClick={handleNewMovie}
+                    />
                 </Form>
             </main>
         </Container>

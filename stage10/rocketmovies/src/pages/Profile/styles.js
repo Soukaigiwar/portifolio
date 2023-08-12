@@ -11,20 +11,22 @@ export const Container = styled.div`
         padding: 0 14.4rem;
 
         background: ${({ theme }) => theme.COLORS.DARK_PINK };
-
-        /* a {
-            display: flex;
-            align-items: center;
-            gap: .8rem;
-            color: ${({ theme }) => theme.COLORS.PINK };
-        } */
     }
 `
 export const Form = styled.form`
     max-width: 34rem;
     margin: 6.4rem auto 0;
-    
-    > div:nth-child(4){
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        
+        > div:nth-child(3){
+            margin-top: 2.4rem;
+        }
+    }
+
+    > #button {
         margin-top: 2.4rem;
     }
 `

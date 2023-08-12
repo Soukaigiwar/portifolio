@@ -5,7 +5,7 @@ export const Container = styled(Link)`
     width: 100%;
     height: 4.8rem;
     padding: 3.2rem auto;
-    margin-top: 2.4rem;
+    /* margin-top: 2.4rem; */
     border-radius: .8rem;
     font-size: 1.6rem;
     line-height: 2.1rem;

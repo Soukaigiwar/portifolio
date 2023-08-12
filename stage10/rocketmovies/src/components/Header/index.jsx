@@ -1,11 +1,12 @@
 import { Container, Profile, LogOut } from "./styles"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import { FiSearch } from "react-icons/fi"
 import { useAuth } from "../../hooks/auth"
 
 import { api } from "../../services/api"
-import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg"
+import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg";
 
-export function Header({ children }) {
+export function Header({children}) {
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
 
@@ -19,7 +20,9 @@ export function Header({ children }) {
     return (
         <Container>
             <h1><Link to="/">RocketMovies</Link></h1>
+            
             {children}
+            
             <Profile>
                 <div>
                     <Link to="/profile">{user.name}</Link>

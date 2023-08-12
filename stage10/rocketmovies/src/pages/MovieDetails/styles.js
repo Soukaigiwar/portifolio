@@ -1,21 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+    display: grid;
+    grid-template-rows: 105px auto;
+
     width: 100%;
     height: 100vh;
-    
-    display: grid;
-    
-    grid-template-rows: 105px auto;
-    grid-template-areas:
-    "header"
-    "content";
-    
+
     > main {
-        grid-area: content;
         margin: 4rem auto;
+        padding: 0 12.3rem;
         overflow-y: auto;
-        width: 113.7rem;
+        width: 100%;
         height: calc(100vh - 18rem);
 
         .title {

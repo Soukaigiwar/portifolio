@@ -1,28 +1,33 @@
 import styled from "styled-components"
 
 export const Container = styled.header`
-    grid-area: header;
-
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin: 0 auto;
-    min-width: 113.7rem; 
+    padding: 0 12.3rem;
     
     height: 11.6rem;
-
+    
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     
-    justify-content: space-between;
-    align-items: center;
 
     
     > h1 a {
+        display: flex;
+        align-items: center;
         font-size: 2.4rem;
         color: ${({ theme }) => theme.COLORS.PINK};
         margin-right: 6.4rem;
+    }
+
+    > Input {
+        display: flex;
+        align-items: center;
     }
 `
 
@@ -57,17 +62,16 @@ export const Profile = styled.div`
 `
 
 export const LogOut = styled.button`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     margin-left: 6.4rem;
-    line-height: 2.4rem;
-    background: none;
+
     border: none;
-    cursor: pointer;
 
     font-size: 1.4rem;
-    line-height: 1.8rem;
     font-weight: 400;
+    line-height: 2.4rem;
+
+    background: none;
     color: ${({ theme }) => theme.COLORS.GRAY_700};
+
+    cursor: pointer;
 `

@@ -24,22 +24,25 @@ export function SignIn() {
 
                 <div>
                     <h2>Faça seu login</h2>
-
-                    <Input
-                        autoComplete="e-mail"
-                        placeholder="E-mail"
-                        type="text"
-                        icon={FiMail}
-                        onChange={e => setEmail(e.target.value)}
-                    />
-                    <Input
-                        autoComplete="password"
-                        placeholder="Senha"
-                        type="password"
-                        icon={FiLock}
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                    <Button title="Entrar"
+                    <div>
+                        <Input
+                            autoComplete="e-mail"
+                            placeholder="E-mail"
+                            type="email"
+                            icon={FiMail}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <Input
+                            autoComplete="password"
+                            placeholder="Senha"
+                            type="password"
+                            icon={FiLock}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <Button
+                        id="button"
+                        title="Entrar"
                         onClick={handleSignIn}
                         style={{
                             heigh: "5.6rem",

@@ -33,8 +33,12 @@ export const Form = styled.form`
     }
 
     > div {
-
-
+        > div {
+            display:flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
         > h2 {
             margin: 4.8rem 0;
             font-size: 2.4rem;
@@ -42,7 +46,10 @@ export const Form = styled.form`
             font-weight: 500;
             color: ${({ theme }) => theme.COLORS.WHITE_900};
         }
+    }
 
+    #button {
+        margin-top: 2.4rem;
     }
     
     > a {

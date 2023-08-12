@@ -6,16 +6,14 @@ export const Container = styled.div`
     
     display: grid;
     
-    grid-template-rows: 105px auto;
-    grid-template-areas:
-    "header"
-    "content";
-    
+    grid-template-rows: 105px 1fr;
+
     > main {
-        grid-area: content;
         margin: 4rem auto;
+        padding: 0 12.3rem;
         overflow-y: auto;
         height: calc(100vh - 18rem);
+        width: 100%;
 
         &::-webkit-scrollbar {
             width: 2.4rem;
@@ -36,17 +34,18 @@ export const Container = styled.div`
 `
 
 export const Form = styled.form`
-    width: 113.7rem;
+    width: 100%;
     
     > h2 {
         margin-top: 2.4rem;
     }
     
-    .double_input {
+    .input_area {
         display: flex;
         justify-content: space-between;
         gap: 4rem;
         margin: 4rem auto 4rem;
+        
         
     }
 
@@ -55,22 +54,17 @@ export const Form = styled.form`
         color: ${({ theme }) => theme.COLORS.GRAY_800};
     }
 
-    .tag_item {
+    .tags_area {
+        display: flex;
+        flex-wrap: wrap;
         padding: 1.6rem;
+        margin-bottom: 4rem;
+        gap: 24px;
         border-radius: .8rem;
         background-color: #0D0C0F;
     }
 
-    .button_area {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4rem;
-        padding: 1.6rem;
-        border-radius: .8rem;
-        background-color: #0D0C0F;
-        
-        > button:nth-child(1) {
+        > button {
             width: 100%;
             height: 4.8rem;
             padding: 3.2rem auto;
@@ -78,21 +72,16 @@ export const Form = styled.form`
             border-radius: .8rem;
             font-size: 1.6rem;
             line-height: 2.1rem;
-            font-weight: 500;
+            font-weight: 800;
             
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: .8rem;
+            
             cursor: pointer;
 
             background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
             color: ${({ theme }) => theme.COLORS.PINK};
         }
-
-        > button:nth-child(2) {
-            font-weight: 500;
-            cursor: pointer;
-        }
-    }
+    
 `

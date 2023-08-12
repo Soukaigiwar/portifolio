@@ -34,7 +34,7 @@ class MovieNotesController {
         if (tags.length !== 0) {
             const movieTagsInsert = tags.map(name => {
                 name = name.toLowerCase();
-                console.log("name da tag: ",name);
+                console.log("name da tag: ", name);
                 return {
                     movie_note_id,
                     user_id,
@@ -42,7 +42,7 @@ class MovieNotesController {
                 };
             });
             console.log(movieTagsInsert);
-            
+
             await knex("movie_tags").insert(movieTagsInsert);
         };
 
@@ -53,19 +53,23 @@ class MovieNotesController {
         const { id } = request.params;
         const user_id = request.user.id;
 
-        const movieNote = await knex("movie_notes")
-            .where({ user_id })
-            .where({ id })
-            .first();
-        const movieTags = await knex("movie_tags")
-            .where({ user_id })
-            .where({ note_id: id })
-            .orderBy("name");
+        try {
+            const movieNote = await knex("movie_notes")
+                .where({ user_id })
+                .where({ id })
+                .first();
+            const movieTags = await knex("movie_tags")
+                .where({ user_id })
+                .where({ movie_note_id: id })
+                .orderBy("name");
+            return response.json({
+                ...movieNote,
+                movieTags
+            });
+        } catch (e) {
+            throw new AppError("Erro ao buscar informações do filme.");
+        }
 
-        return response.json({
-            ...movieNote,
-            movieTags
-        });
     };
 
     async index(request, response) {
@@ -108,7 +112,7 @@ class MovieNotesController {
 
         const moviesWithTags = movieNotes.map(movieNote => {
             const currentMovieTags = userTags.filter(tag => tag.movie_note_id === movieNote.id);
-            
+
             return {
                 ...movieNote,
                 tags: currentMovieTags

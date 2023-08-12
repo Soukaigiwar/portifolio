@@ -10,7 +10,7 @@ const routes = Router();
 routes.use("/users", usersRouter);
 routes.use("/sessions", sessionsRouter);
 
-routes.use("/movieNotes", movieNotesRouter);
-routes.use("/movieTags", movieTagsRouter);
+routes.use("/movienotes", movieNotesRouter);
+routes.use("/movietags", movieTagsRouter);
 
 module.exports = routes;

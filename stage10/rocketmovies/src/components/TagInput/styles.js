@@ -13,9 +13,11 @@ export const Container = styled.div`
 
     border-radius: 1rem;
     padding: 1.6rem;
-    margin-right: 2.4rem;
-    margin-bottom: 2.4rem;
+
     
+    
+    
+
     > button {
         border: none;
         background: none;
@@ -50,6 +52,7 @@ export const Container = styled.div`
         background: transparent;
         border: none;
         font-size: 1.6rem;
+        cursor: ${({ isNew }) => isNew ? "text" : "default"};
 
         &::placeholder {
             color: ${({ theme }) => theme.COLORS.GRAY_900};
@@ -58,5 +61,7 @@ export const Container = styled.div`
         &:focus {
             outline: none;
         }
+
+        
     }
 `
