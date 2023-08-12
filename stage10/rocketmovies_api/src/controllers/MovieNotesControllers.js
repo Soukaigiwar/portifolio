@@ -122,6 +122,40 @@ class MovieNotesController {
         return response.json(moviesWithTags);
     };
 
+    async update(request, response) {
+        const { id, title, description, rating, tags } = request.body;
+        const user_id = request.user.id;
+
+        console.log(tags);
+        try {
+            await knex("movie_tags")
+                .where({ movie_note_id: id })
+                .delete()
+            
+            const movieTagsInsert = tags.map(name => {
+                name = name.toLowerCase();
+                return {
+                    movie_note_id: id,
+                    user_id,
+                    name
+                };
+            });
+
+            await knex("movie_tags").insert( movieTagsInsert );
+
+            await knex("movie_notes")
+                .update({
+                    title,
+                    rating,
+                    description
+                })
+                .where({ id })
+            return response.status(200).json();
+        } catch (error) {
+            throw new AppError("Erro ao atualizar dados do filme")
+        }
+    }
+
     async delete(request, response) {
         const { id } = request.params;
         const user_id = request.user.id;

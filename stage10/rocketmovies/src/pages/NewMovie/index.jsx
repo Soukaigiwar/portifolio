@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { api } from "../../services/api"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Container, Form } from "./styles"
-import { FiSearch } from "react-icons/fi"
+
 import { TextButton } from "../../components/TextButton"
 import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
@@ -12,6 +12,7 @@ import { Header } from "../../components/Header"
 
 
 export function NewMovie() {
+    const [submitTitle, setSubmitTitle] = useState("Adicionar Filme")
     const [title, setTitle] = useState("")
     const [rating, setRating] = useState("")
     const [description, setDescription] = useState("")
@@ -19,14 +20,38 @@ export function NewMovie() {
     const [tags, setTags] = useState([])
     const [newTag, setNewTag] = useState("")
 
+    const params = useParams();
     const navigate = useNavigate()
 
     const handleBack = () => navigate(-1);
 
-    async function handleNewMovie() {
+    function handleMovie() {
+        const id = params.id
         if (!title) return alert("Preencha o Título.")
         if (!rating) return alert("Dê uma nota de 1 a 5")
         if (newTag) return alert("Você precisa confirmar o campo da tag ou deixar em branco.")
+
+        if (id) {
+            handleUpdateMovie(id)
+        } else {
+            handleNewMovie()
+        }
+    }
+
+    async function handleUpdateMovie(id) {
+        await api.put(`/movieNotes/${id}`, {
+            id,
+            title,
+            description,
+            rating,
+            tags
+        })
+
+        alert("Filme atualizado com sucesso.")
+        navigate("/")
+    }
+
+    async function handleNewMovie() {
 
         await api.post("/movieNotes", {
             title,
@@ -48,12 +73,32 @@ export function NewMovie() {
         setTags(prevState => prevState.filter(tag => tag !== deleted))
     }
 
+
+    useEffect(() => {
+        async function fetchMovie() {
+            const id = params.id
+
+            if (id) {
+                setSubmitTitle("Editar filme")
+
+                const response = await api.get(`/movienotes/${params.id}`);
+
+                setTitle(response.data.title);
+                setRating(response.data.rating);
+                setDescription(response.data.description);
+
+                const tags = response.data.movieTags.map(tag => tag.name);
+                setTags(tags);
+            }
+
+        };
+
+        fetchMovie();
+    }, []);
+
     return (
         <Container>
-            <Header>
-                <Input icon={FiSearch} placeholder="Pesquisar pelo título" />
-            </Header>
-
+            <Header />
             <main>
                 <TextButton onClick={handleBack} />
                 <Form>
@@ -61,15 +106,18 @@ export function NewMovie() {
                     <div className="input_area">
                         <Input
                             placeholder="Título"
+                            value={title}
                             onChange={e => setTitle(e.target.value)}
                         />
                         <Input
                             placeholder="Sua nota (de 1 a 5)"
+                            value={rating}
                             onChange={e => setRating(e.target.value)}
                         />
                     </div>
                     <Textarea
                         placeholder="Observações"
+                        value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
                     <h3>Marcadores</h3>
@@ -92,8 +140,8 @@ export function NewMovie() {
                         />
                     </div>
                     <Button
-                        title="Salvar alterações"
-                        onClick={handleNewMovie}
+                        title={submitTitle}
+                        onClick={handleMovie}
                     />
                 </Form>
             </main>

@@ -15,5 +15,6 @@ export default {
         
         DARK_PINK: "#FF859B0D",
         PINK: "#FF859B",
+        DARK_BUTTON: "#0D0C0F",
     }
 }

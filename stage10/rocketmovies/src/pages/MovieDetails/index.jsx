@@ -1,10 +1,10 @@
 import { FiClock, FiSearch } from "react-icons/fi"
 import { Header } from "../../components/Header"
 import { TextButton } from "../../components/TextButton"
-import { Input } from "../../components/Input"
+import { Button } from "../../components/Button"
 import { Stars } from "../../components/Stars"
 import { Tag } from "../../components/Tag"
-import { Container } from './styles'
+import { Container, Form } from './styles'
 import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -18,6 +18,16 @@ export function MovieDetails() {
     const navigate = useNavigate();
     const handleBack = () => navigate(-1);
 
+    async function handleRemoveMovie(id) {
+        const confirm = window.confirm("Deseja excluir esse filme?");
+
+        if (confirm) {
+            await api.delete(`/movienotes/${id}`);
+            handleBack();
+        };
+    };
+
+
     const [data, setData] = useState(null);
     const [tags, setTags] = useState(null);
     const [dateTime, setDateTime] = useState("");
@@ -25,9 +35,9 @@ export function MovieDetails() {
     const avatarUrl = user.avatar
         ? `${api.defaults.baseURL}/files/${user.avatar}`
         : avatarPlaceholder;
-    
+
     function formatDateTime(dateToBeFormated) {
-        if(dateToBeFormated) {
+        if (dateToBeFormated) {
             const dateTime = new Date(dateToBeFormated.replace(/-/g, '/'));
             const day = dateTime.getDate().toString().padStart(2, '0');
             const month = (dateTime.getMonth() + 1).toString().padStart(2, '0');
@@ -60,9 +70,7 @@ export function MovieDetails() {
 
     return (
         <Container>
-            <Header>
-                <Input icon={FiSearch} placeholder="Pesquisar pelo título" />
-            </Header>
+            <Header />
             {
                 data &&
                 <main>
@@ -75,24 +83,34 @@ export function MovieDetails() {
                     <div className="author_and_date">
                         <span>
                             <img src={avatarUrl} alt="Imagem do perfil" />
-                                <h3>Por {user.name}</h3>
+                            <h3>Por {user.name}</h3>
                         </span>
                         <span>
                             <FiClock />
                             <h3>{dateTime}</h3>
                         </span>
-                        </div>
-                            <div className="tag_area">
+                    </div>
+                    <div className="tag_area">
                         {
                             tags &&
-                                
-                                    tags.map(tag => (
-                                        <Tag key={String(tag.id)} title={tag.name} />
-                                    ))
-                                
-                            }
-                            </div>
-                        <p>{data.description}</p>
+
+                            tags.map(tag => (
+                                <Tag key={String(tag.id)} title={tag.name} />
+                            ))
+
+                        }
+                    </div>
+                    <p>{data.description}</p>
+                    <Form>
+                        <Button
+                            title="Excluir filme"
+                            onClick={() => handleRemoveMovie(data.id)}
+                        />
+                        <Button
+                            title="Editar filme"
+                            to={`/newmovie/${data.id}`}
+                        />
+                    </Form>
                 </main>
             }
         </Container>

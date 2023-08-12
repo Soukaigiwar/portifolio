@@ -110,3 +110,15 @@ export const Container = styled.div`
         }
     }  
 `
+
+export const Form = styled.form`
+    display: inline-flex;
+    gap: 4rem;
+    width: 100%;
+    margin-top: 4rem;
+
+    > :nth-child(1) {
+        background-color: ${({ theme }) => theme.COLORS.DARK_BUTTON};
+        color: ${({ theme }) => theme.COLORS.PINK};
+    }
+`
