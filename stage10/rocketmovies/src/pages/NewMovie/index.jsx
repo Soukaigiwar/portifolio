@@ -9,7 +9,7 @@ import { Textarea } from "../../components/Textarea"
 import { TagInput } from "../../components/TagInput"
 import { Button } from "../../components/Button"
 import { Header } from "../../components/Header"
-
+import { Footer } from "../../components/Footer";
 
 export function NewMovie() {
     const [submitTitle, setSubmitTitle] = useState("Adicionar Filme")
@@ -145,6 +145,7 @@ export function NewMovie() {
                     />
                 </Form>
             </main>
+            <Footer />
         </Container>
     )
 }

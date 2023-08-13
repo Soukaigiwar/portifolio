@@ -3,6 +3,7 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from '../../components/Input';
 import { MovieItem } from "../../components/MovieItem";
+import { Footer } from "../../components/Footer";
 import { Container, Search } from './styles';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -59,6 +60,7 @@ export function Home() {
                     ))
                 }
             </main>
+            <Footer />
         </Container>
     );
 };

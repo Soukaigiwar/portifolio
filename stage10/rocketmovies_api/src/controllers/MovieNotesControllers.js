@@ -7,18 +7,23 @@ class MovieNotesController {
     async create(request, response) {
         const { title, description, rating, tags } = request.body;
         const user_id = request.user.id;
-        const validateUserId = await knex("users").where('id', user_id).first();
 
-        if (!validateUserId) {
-            throw new AppError("Usuário inválido");
-        };
+        try {
+            const validateUserId = await knex("users").where('id', user_id).first();
 
-        if (!rating || rating < 1 || rating > 5) {
-            throw new AppError("A avaliação (rating) precisa ser entre 1 e 5.");
-        };
+            if (!validateUserId) {
+                throw new AppError("Usuário inválido");
+            };
 
-        if (!tags) {
-            throw new AppError("Precisa ter alguma tag.");
+            if (!rating || rating < 1 || rating > 5) {
+                throw new AppError("A avaliação (rating) precisa ser entre 1 e 5.");
+            };
+
+            if (!tags) {
+                throw new AppError("Precisa ter alguma tag.");
+            };
+        } catch (error) {
+            throw new AppError("Erro ao recuperar dados do filme.");
         };
 
         const [movie_note_id] = await knex("movie_notes").insert({
@@ -28,26 +33,26 @@ class MovieNotesController {
             rating
         });
 
-        console.log("id da nota cadastrada: ", movie_note_id);
-        console.log("qtd de tags: ", tags.length);
-
         if (tags.length !== 0) {
             const movieTagsInsert = tags.map(name => {
                 name = name.toLowerCase();
-                console.log("name da tag: ", name);
+
                 return {
                     movie_note_id,
                     user_id,
                     name
                 };
             });
-            console.log(movieTagsInsert);
 
-            await knex("movie_tags").insert(movieTagsInsert);
+            try {
+                await knex("movie_tags").insert(movieTagsInsert);
+            } catch (error) {
+                throw new AppError("Erro ao inserir dados do filme.");
+            };
         };
 
         return response.status(201).json();
-    }
+    };
 
     async show(request, response) {
         const { id } = request.params;
@@ -126,12 +131,11 @@ class MovieNotesController {
         const { id, title, description, rating, tags } = request.body;
         const user_id = request.user.id;
 
-        console.log(tags);
         try {
             await knex("movie_tags")
                 .where({ movie_note_id: id })
-                .delete()
-            
+                .delete();
+
             const movieTagsInsert = tags.map(name => {
                 name = name.toLowerCase();
                 return {
@@ -141,7 +145,7 @@ class MovieNotesController {
                 };
             });
 
-            await knex("movie_tags").insert( movieTagsInsert );
+            await knex("movie_tags").insert(movieTagsInsert);
 
             await knex("movie_notes")
                 .update({
@@ -149,12 +153,13 @@ class MovieNotesController {
                     rating,
                     description
                 })
-                .where({ id })
+                .where({ id });
+
             return response.status(200).json();
         } catch (error) {
-            throw new AppError("Erro ao atualizar dados do filme")
-        }
-    }
+            throw new AppError("Erro ao atualizar dados do filme");
+        };
+    };
 
     async delete(request, response) {
         const { id } = request.params;

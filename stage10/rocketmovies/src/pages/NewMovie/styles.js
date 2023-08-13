@@ -6,13 +6,13 @@ export const Container = styled.div`
     
     display: grid;
     
-    grid-template-rows: 105px 1fr;
+    grid-template-rows: 11.6rem 1fr;
 
     > main {
         margin: 4rem auto;
         padding: 0 12.3rem;
         overflow-y: auto;
-        height: calc(100vh - 18rem);
+        height: calc(100% - 4rem);
         width: 100%;
 
         &::-webkit-scrollbar {

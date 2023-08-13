@@ -4,7 +4,8 @@ import { FiMail, FiLock, FiUser, FiArrowLeft } from "react-icons/fi"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
-import { Container, Form, Background } from './styles'
+import { Footer } from "../../components/Footer"
+import { Container, Form, Background, Foot } from './styles'
 
 export function SignUp() {
     const [name, setName] = useState("")
@@ -68,6 +69,9 @@ export function SignUp() {
                 <Link to="/"><FiArrowLeft />Voltar para o Login</Link>
             </Form>
             <Background />
+            <Foot>
+                <Footer />
+            </Foot>
         </Container>
     )
 }

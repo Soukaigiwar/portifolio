@@ -4,13 +4,19 @@ import backgroundImg from "../../assets/img/background.png"
 export const Container = styled.div`
     height: 100vh;
 
-    display: flex;
+    display: grid;
+    grid-template-areas: 
+            "form bg-image "
+            "foot foot ";
+    grid-template-rows: 1fr 6rem;
+    grid-template-columns: auto 1fr;
     align-items: stretch;
 `
 
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
+    grid-area: form;
 
     margin-left: 13.4rem;
     margin-right: 16rem;
@@ -64,4 +70,9 @@ export const Background = styled.div`
     flex: 1;
     background: url(${backgroundImg}) no-repeat center center;
     background-size: cover;
+    grid-area: bg-image;
+`
+
+export const Foot = styled.footer`
+    grid-area: foot;
 `

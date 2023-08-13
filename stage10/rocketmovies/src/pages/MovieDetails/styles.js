@@ -1,18 +1,20 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    display: grid;
-    grid-template-rows: 105px auto;
+    grid-template-areas: footer;
+    grid-template-rows:
+        11.6rem
+        1fr;
 
     width: 100%;
-    height: 100vh;
+    height: 98vh;
 
     > main {
         margin: 4rem auto;
         padding: 0 12.3rem;
         overflow-y: auto;
         width: 100%;
-        height: calc(100vh - 18rem);
+        height: calc(100% - 18rem - 4rem);
 
         .title {
             display: flex;

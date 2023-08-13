@@ -4,6 +4,7 @@ import { TextButton } from "../../components/TextButton"
 import { Button } from "../../components/Button"
 import { Stars } from "../../components/Stars"
 import { Tag } from "../../components/Tag"
+import { Footer } from "../../components/Footer"
 import { Container, Form } from './styles'
 import avatarPlaceholder from "../../assets/img/avatar_placeholder.svg";
 import { useNavigate, useParams } from "react-router-dom";
@@ -113,6 +114,7 @@ export function MovieDetails() {
                     </Form>
                 </main>
             }
+            <Footer />
         </Container>
     )
 }

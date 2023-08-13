@@ -14,7 +14,6 @@ export const Container = styled.header`
     border-bottom-style: solid;
     border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-    
 
     
     > h1 a {

@@ -4,7 +4,8 @@ import { FiMail, FiLock } from "react-icons/fi"
 import { Link } from "react-router-dom"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
-import { Container, Form, Background } from './styles'
+import { Footer } from "../../components/Footer";
+import { Container, Form, Background, Foot } from './styles'
 
 export function SignIn() {
     const [email, setEmail] = useState("")
@@ -52,6 +53,9 @@ export function SignIn() {
                 <Link to="/register">Criar Conta</Link>
             </Form>
             <Background />
+            <Foot>
+                <Footer />
+            </Foot>
         </Container>
     )
 }
