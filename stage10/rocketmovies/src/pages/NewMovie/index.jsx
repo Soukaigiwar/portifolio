@@ -102,7 +102,7 @@ export function NewMovie() {
             <main>
                 <TextButton onClick={handleBack} />
                 <Form>
-                    <h2>Novo Filme</h2>
+                    <h2>{submitTitle}</h2>
                     <div className="input_area">
                         <Input
                             placeholder="Título"
