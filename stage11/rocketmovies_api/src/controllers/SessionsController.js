@@ -8,6 +8,8 @@ class SessionControler {
     async create(request, response) {
         const { email, password } = request.body;
 
+        console.log(email, "password is secret");
+
         const user = await knex("users").where({ email }).first();
 
         if (!user) {
