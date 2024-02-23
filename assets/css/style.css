@@ -33,51 +33,61 @@ header p {
 .content {
 	display: flex;
 	align-items: flex-end;
-	color: white;
-}
-
-.content {
-	/* height: 800vh; */
 	font-size: 30px;
-
 	background-image: url(../img/night_sky.jpg),
-		linear-gradient(
+	linear-gradient(
 		180deg, 
 		rgb(0, 0, 0) 0%,
 		rgb(0, 0, 0) 40%,
 		rgb(101, 176, 241)
-		);
-		
+		);	
+	color: white;
 	background-repeat: no-repeat;
 	background-size: contain; 
 }
 
-.content li {
+.content ul li {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 	margin-left: 25px;
-	width: 400px;
+	margin-bottom: 50px;
+	width: 500px;
 	height: 380px;
 	font-size: 20px;
 	list-style: none;
 	transition: .8s;
 	font-family: monospace;
+	border-radius: 8px;
+	background-color: rgba(255, 255, 255, 0.15);
 }
 
-.content li p {
-	display: flex;
-	width: 400px;
+.content ul li:last-child {
+	background-color: unset;
 }
 
-.content li p img {
+.content ul li div {
+	width: 100%;
+	padding: 10px 10px 0 10px;
+}
+
+.content ul li p {
+	text-align: center;
+	width: 480px;
+}
+
+.content ul li p img {
 	width: 200px;
 	position: relative;
-	bottom: -10px;
-	left: -120px;
+	bottom: 20px;
+	left: -200px;
 }
 
 .content span {
 	display: flex;
 	flex-direction: column;
-	/* flex-wrap: wrap; */
 	width: 380px;
 	font-size: 14px;
 }
@@ -89,7 +99,7 @@ header p {
 .thumbnail {
 	width: 300px;
 	margin-top: 20px;
-	border-radius: 10px;
+	border-radius: 5px;
 	transition: .8s;
 }
 
@@ -120,15 +130,25 @@ a {
 		padding: 10px;
 	}
 
-	.content li {
+	.content ul li {
 		margin-left: 10px;
+		margin-bottom: 50px;
+		height: 400px;
 		width: 200px;
 		font-size: 16px;
 	}
 
-	.content li p img {
-		bottom: -110px;
+	.content ul li p {
+		width: 190px;
+	}
+
+	.content ul li p img {
+		bottom: -50px;
 		left: 0;
+	}
+
+	.content ul li span {
+		width: 190px;
 	}
 
 	.thumbnail {
@@ -139,7 +159,7 @@ a {
 	.foguete {
 		position: fixed;
 		bottom: 130px;
-		left: 200px;
+		left: 230px;
 	}
 }
 
@@ -151,15 +171,15 @@ a {
 		padding: 35px;
 	}
 
-	.content li {
+	.content ul li {
 		margin: 150px 40px;
 		font-size: 30px;
 		height: 400px;
 	}
 
-	.content li p img {
-		bottom: -110px;
-		left: 0;
+	.content ul li p img {
+		bottom: -200px;
+		left: -150px;
 	}
 
 	.thumbnail {
